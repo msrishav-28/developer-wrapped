@@ -44,7 +44,7 @@ export const PosterSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
   const posterRef = useRef<HTMLDivElement>(null);
   
   const shareText = `My Developer Wrapped ${data.year}:\n\n${data.totalCommits} commits\n${data.topLanguages[0]?.name || 'Code'} mastery\n${data.community.totalStars} stars earned\n\nCheck out your Developer Wrapped too!`;
-  const shareUrl = 'https://gitstory.pankajk.tech/';
+  const shareUrl = typeof window !== 'undefined' ? window.location.origin : 'https://github.com/msrishav-28/developer-wrapped';
 
   const shareLinks = [
     {

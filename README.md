@@ -1,8 +1,8 @@
 <div align="center">
 
-# Developer Wrapped 2025
+# Developer Wrapped
 
-### *Your Year in Code — Cinematic Wrapped*
+### *Your Year in Code — The Cinematic Spotify Wrapped for Developers*
 
 <p align="center">
   <img src="https://img.shields.io/badge/Next.js-16.x-000000?style=for-the-badge&logo=next.js&logoColor=white" alt="Next.js" />
@@ -10,18 +10,21 @@
   <img src="https://img.shields.io/badge/TypeScript-5.x-3178C6?style=for-the-badge&logo=typescript&logoColor=white" alt="TypeScript" />
   <img src="https://img.shields.io/badge/Tailwind-4.x-38B2AC?style=for-the-badge&logo=tailwind-css&logoColor=white" alt="Tailwind" />
   <img src="https://img.shields.io/badge/Framer_Motion-12.x-FF0055?style=for-the-badge&logo=framer&logoColor=white" alt="Framer Motion" />
-  <img src="https://img.shields.io/badge/NextAuth.js-4.x-000000?style=for-the-badge&logo=auth0&logoColor=white" alt="NextAuth" />
+  <img src="https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=for-the-badge" alt="PRs Welcome" />
+  <img src="https://img.shields.io/badge/License-MIT-blue.svg?style=for-the-badge" alt="License MIT" />
 </p>
 
 <p align="center">
-  <strong>Transform your GitHub and GitLab contributions into a stunning, Instagram Stories-style cinematic experience.</strong>
+  <strong>Transform your GitHub and GitLab contributions into an immersive, Instagram Stories-style cinematic experience with ambient audio, coding auras, flow state analytics, and Spotify media insights.</strong>
 </p>
 
 <p align="center">
-  <a href="https://gitstory.pankajk.tech/">Live Demo</a> •
   <a href="#features">Features</a> •
+  <a href="#slides">Slides</a> •
   <a href="#quick-start">Quick Start</a> •
-  <a href="#tech-stack">Tech Stack</a>
+  <a href="#contributing">Contributing</a> •
+  <a href="#contributors">Contributors</a> •
+  <a href="#license">License</a>
 </p>
 
 ---
@@ -32,79 +35,25 @@
 
 | Feature | Description |
 |---------|-------------|
-| **Cinematic Experience** | 11 beautifully animated slides with Instagram Stories-like navigation |
+| **Evergreen Engine** | Select and review any year (2024, 2025, 2026+) dynamically |
+| **Cinematic Experience** | 13 beautifully animated slides with Instagram Stories-like navigation |
+| **Flow State Analytics** | Intelligent deep-work calculation measuring continuous coding blocks |
+| **Audio Aura Visualizer** | Mesh gradient aura animated from your top languages and coding temperament |
+| **Top Tracks & Vinyl** | Repositories displayed as Billboard top hits with a spinning 3D vinyl record |
+| **Ambient Lo-Fi Soundscape** | Background lo-fi coding audio with instant mute/unmute controls |
+| **Binge Coder & Spotify** | Connect Spotify to see your top soundtrack, paired with anime & movie insights |
 | **Live GitHub & GitLab Data** | Real-time stats fetched from GitHub/GitLab API — commits, PRs, issues, reviews |
-| **OAuth Authentication** | One-click login with GitHub or GitLab |
-| **Dark/Light Theme** | Toggle between themes on main page and slides |
-| **Smart Archetypes** | AI-determined coding personas: *Night Owl*, *Weekend Warrior*, *Grid Painter*, and more |
-| **Velocity Charts** | Animated contribution charts powered by Recharts |
-| **Contribution Grid** | Visual heatmap of your 2025 coding activity |
-| **Top 5 Repositories** | Showcase your best projects with smart ranking |
-| **Language Breakdown** | Beautiful visualization of your tech stack (55+ languages!) |
-| **Mobile-First** | Touch gestures: tap left/right to navigate, hold to pause |
-| **Poster Export** | Download a shareable movie-poster style summary |
-| **Social Sharing** | Share to Twitter, LinkedIn, Reddit, WhatsApp with one click |
-| **Celebration Effects** | End your story with style |
-| **SEO Optimized** | Built with Next.js for better search engine visibility |
-
----
-
-## What's New (v4.0)
-
-### OAuth Authentication
-- **GitHub OAuth** — One-click login, no token copying needed
-- **GitLab OAuth** — Full GitLab support with OAuth authentication
-- Private repos & org repos automatically included when authenticated
-
-### Theme Toggle
-- **Dark/Light Mode** — Toggle on main page and within slide presentation
-- **Play/Pause Controls** — On-screen buttons during story playback
-- **Theme-aware slides** — All 11 slides adapt to your preferred theme
-
-### Social Sharing
-- **Share Button** — On the final poster slide
-- **Multiple platforms** — Twitter, LinkedIn, Reddit, WhatsApp
-- **Copy Link** — With toast notification
-- **Pre-written share text** — Automatically includes your stats
-
-### GitLab Support
-- **Full GitLab API integration** — Same cinematic experience for GitLab users
-- **OAuth authentication** — Login with GitLab account
-- **Project stats** — Commits, merge requests, issues from GitLab
-
----
-
-## Previous Updates
-
-### Next.js Migration (v3.0)
-- **Migrated from Vite to Next.js 16** for better SEO and performance
-- **Server-side metadata** for improved social sharing (Twitter, Facebook, LinkedIn)
-- **Optimized fonts** with `next/font/google` for better performance
-- **Dynamic sitemap** generation for search engines
-
-### Optimized API (v2.0)
-- **With Token:** Only **4 API calls** (GraphQL bundles contributions + PR/Issue/Review counts!)
-- **Without Token:** 7 API calls (REST fallback)
-- **43% fewer API calls** when authenticated!
-
-### Smart Repository Scoring
-Projects are now ranked using **12 factors** instead of just stars:
-- Stars & Forks (logarithmic scale)
-- Recent activity in 2025 (time-decay bonus)
-- Original work (not forks)
-- Description & Topics
-- Primary language
-- Repository size
-- Open issues (activity indicator)
-- Created in 2025 bonus
-- Watchers
-- Archived penalty
+| **OAuth Authentication** | One-click login with GitHub, GitLab, or Spotify |
+| **Dark/Light Theme** | Fluid theme switching across all slides and controls |
+| **Vibe Personas** | Smart archetypes detecting AI usage, late-night coding, and language breadth |
+| **Velocity Charts** | Animated contribution velocity charts powered by Recharts |
+| **Poster Export & Share** | Downloadable high-res movie poster with one-click social sharing |
 
 ---
 
 ## Slides
 
-Experience your year through **11 cinematic slides**:
+Experience your year through **13 cinematic slides**:
 
 | # | Slide | What It Shows |
 |---|-------|---------------|
@@ -114,30 +63,32 @@ Experience your year through **11 cinematic slides**:
 | 4 | **Composition** | Breakdown: Commits vs PRs vs Issues vs Reviews |
 | 5 | **Routine** | Your busiest day of the week |
 | 6 | **Productivity** | Peak coding hours & time-of-day persona |
-| 7 | **Community** | Followers, stars, and repo count |
-| 8 | **Languages** | Top 3 programming languages |
-| 9 | **Top 5 Repos** | Your best repositories ranked by score |
-| 10 | **Top Repo** | Spotlight on your #1 repository |
-| 11 | **Poster** | Downloadable movie poster + Share buttons |
+| 7 | **Community** | Followers, stars, and repository statistics |
+| 8 | **Aura** | Dynamic mesh gradient visualizer with Flow State Minutes and Vibe Score |
+| 9 | **Languages** | Top programming languages & polyglot breakdown |
+| 10 | **Top Tracks** | Your repositories ranked and styled as music tracks |
+| 11 | **Vinyl Record** | 3D spinning vinyl record spotlighting your Magnum Opus repository |
+| 12 | **The Binge Coder** | What fueled your flow state: Spotify tracks, anime, and movies |
+| 13 | **Poster** | Exportable festival/movie poster with sharing controls |
 
 ---
 
 ## Archetypes
 
-Based on your **behavior patterns**, you'll be assigned one of these personas:
+Based on your **coding habits, commit timing, and stack**, you'll be assigned a persona:
 
 | Archetype | Criteria |
 |-----------|----------|
-| **The Pull Request Pro** | Opens many PRs (>20% of activity) |
+| **The Prompt Alchemist** | Heavy AI tooling, modern stack, polyglot workflow |
+| **The Midnight Vibe Coder** | 60%+ activity late night between 11 PM and 4 AM |
+| **The Lo-Fi Polyglot** | Smoothly orchestrating 4+ programming languages |
+| **The Pull Request Pro** | High collaboration with >20% of activity in PRs |
 | **The Reviewer** | Frequent code reviewer (>10% of activity) |
-| **The Night Owl** | Peak activity after 10 PM |
-| **The Early Bird** | Peak activity before noon |
-| **The Weekend Warrior** | >35% commits on weekends |
+| **The Weekend Warrior** | >35% commits pushed on weekends |
 | **The Grid Painter** | 1200+ commits (green squares everywhere!) |
-| **The Consistent** | 400+ commits, steady contributor |
-| **The Planner** | High issue-to-commit ratio |
-| **The Community Star** | 500+ followers or 1000+ total stars |
-| **The Tinkerer** | Default — you're exploring! |
+| **The Consistent** | 400+ commits, steady daily contributor |
+| **The Community Star** | High star and follower count across repositories |
+| **The Tinkerer** | Curious explorer shipping across multiple experiments |
 
 ---
 
@@ -145,35 +96,35 @@ Based on your **behavior patterns**, you'll be assigned one of these personas:
 
 ```bash
 # Clone the repository
-git clone https://github.com/PankajKumardev/gitstory-2025.git
-cd gitstory-2025
+git clone https://github.com/msrishav-28/developer-wrapped.git
+cd developer-wrapped
 
 # Install dependencies
 npm install
 
 # Set up environment variables
 cp .env.example .env.local
-# Edit .env.local with your OAuth credentials
+# (Optional) Add your GitHub, GitLab, or Spotify OAuth credentials
 
 # Start development server
 npm run dev
 ```
 
-Open **http://localhost:3000** and enter any GitHub username!
+Open **http://localhost:3000** and enter any GitHub or GitLab username!
 
-> **Tip:** Type `demo` to see a full experience with mock data.
+> **Tip:** Type `demo` to preview the full cinematic experience with mock data.
 
 ---
 
 ## Authentication
 
-### OAuth Login (Recommended)
-Click **GitHub** or **GitLab** button on the home page for one-click authentication.
+### OAuth Login (Optional)
+Click **GitHub**, **GitLab**, or **Connect Spotify** on the home page for seamless authentication.
 
-### Environment Variables
+### Environment Variables (`.env.local`)
 ```env
 # NextAuth Configuration
-NEXTAUTH_URL=https://gitstory.pankajk.tech
+NEXTAUTH_URL=http://localhost:3000
 NEXTAUTH_SECRET=your-secret-key
 
 # GitHub OAuth (https://github.com/settings/developers)
@@ -183,44 +134,10 @@ GITHUB_CLIENT_SECRET=your-github-client-secret
 # GitLab OAuth (https://gitlab.com/-/user_settings/applications)
 GITLAB_CLIENT_ID=your-gitlab-client-id
 GITLAB_CLIENT_SECRET=your-gitlab-client-secret
+
+# Spotify Integration (Optional)
+NEXT_PUBLIC_SPOTIFY_CLIENT_ID=your-spotify-client-id
 ```
-
-### OAuth Callback URLs
-| Provider | Callback URL |
-|----------|-------------|
-| GitHub | `https://yourdomain.com/api/auth/callback/github` |
-| GitLab | `https://yourdomain.com/api/auth/callback/gitlab` |
-
-### GitLab Scopes Required
-- `read_user` — Profile info
-- `read_api` — API access
-- `read_repository` — Repository access
-
-### Benefits with OAuth
-| Feature | Without OAuth | With OAuth |
-|---------|---------------|------------|
-| Rate Limit | 60/hour | **5000/hour** |
-| Private Repos | No | Yes |
-| Org Repos | No | Yes |
-| Private Contributions | No | Yes |
-
----
-
-## Tech Stack
-
-| Technology | Purpose |
-|------------|---------|
-| **Next.js 16** | React framework with App Router for SEO & performance |
-| **React 19** | UI Components with latest features |
-| **NextAuth.js** | OAuth authentication for GitHub & GitLab |
-| **TypeScript** | Type-safe development |
-| **Tailwind CSS 4** | Utility-first styling with `@theme` config |
-| **Framer Motion** | Buttery-smooth animations |
-| **Recharts** | Beautiful, responsive charts |
-| **Lucide React** | Consistent icon system |
-| **html-to-image** | Poster PNG export |
-| **canvas-confetti** | Celebration effects |
-| **Vercel Analytics** | Privacy-friendly analytics |
 
 ---
 
@@ -229,25 +146,18 @@ GITLAB_CLIENT_SECRET=your-gitlab-client-secret
 ### On-Screen Controls
 | Button | Effect |
 |--------|--------|
-| **Pause** | Pause slide timer |
-| **Theme** | Toggle dark/light mode |
-| **Close** | Exit story |
-| **Share** | Share to social (poster slide) |
+| **Play / Pause** | Pause or resume slide timer |
+| **Volume Toggle** | Mute or unmute ambient lo-fi audio |
+| **Theme Toggle** | Switch between dark and light mode |
+| **Close** | Exit story and return to homepage |
+| **Share** | Open social sharing menu (Poster slide) |
 
-### Touch Gestures (Mobile)
+### Navigation Controls
 | Action | Effect |
 |--------|--------|
-| **Tap right 2/3** | Next slide |
-| **Tap left 1/3** | Previous slide |
-| **Hold anywhere** | Pause timer |
-| **Release** | Resume timer |
-
-### Keyboard Controls (Desktop)
-| Key | Effect |
-|-----|--------|
-| **Right Arrow** or **D** | Next slide |
-| **Left Arrow** or **A** | Previous slide |
-| **Space** | Pause/Resume |
+| **Tap Right / Right Arrow / D** | Next slide |
+| **Tap Left / Left Arrow / A** | Previous slide |
+| **Hold Screen / Space** | Pause slide timer |
 | **Escape** | Exit story |
 
 ---
@@ -255,90 +165,97 @@ GITLAB_CLIENT_SECRET=your-gitlab-client-secret
 ## Project Structure
 
 ```
-gitstory-2025/
+developer-wrapped/
 ├── app/
 │   ├── api/auth/[...nextauth]/  # NextAuth API route
-│   ├── layout.tsx               # Root layout with providers
-│   ├── page.tsx                 # Main page with OAuth
-│   ├── globals.css              # Tailwind + custom styles
+│   ├── layout.tsx               # Root layout with providers & metadata
+│   ├── page.tsx                 # Main landing page with OAuth & Year picker
+│   ├── globals.css              # Tailwind + custom animations
 │   └── sitemap.ts               # Dynamic sitemap
 ├── components/
-│   ├── providers/
-│   │   └── SessionProvider.tsx  # NextAuth session wrapper
-│   ├── StoryContainer.tsx       # Slide navigation & controls
+│   ├── StoryContainer.tsx       # Slide orchestrator, ambient audio & controls
 │   ├── SlideLayout.tsx          # Theme-aware slide wrapper
-│   └── slides/                  # 11 slide components
+│   └── slides/                  # 13 cinematic slide components
+│       ├── AuraSlide.tsx        # Mesh gradient flow visualizer
+│       ├── VinylSlide.tsx       # 3D spinning vinyl record
+│       ├── TopTracksSlide.tsx   # Billboard-style repository list
+│       ├── BingeSlide.tsx       # Spotify & media fuel showcase
+│       └── PosterSlide.tsx      # Exportable poster with Flow Mins
 ├── context/
 │   └── ThemeContext.tsx         # Dark/light theme context
 ├── lib/
 │   └── auth.ts                  # NextAuth configuration
 ├── services/
-│   ├── githubService.ts         # GitHub API integration
+│   ├── githubService.ts         # GitHub API integration & GraphQL
 │   ├── gitlabService.ts         # GitLab API integration
-│   └── scoringAlgorithms.ts     # Scoring logic
-├── types.ts                     # TypeScript interfaces
-└── constants.ts                 # Mock data & configuration
+│   ├── mediaService.ts          # Spotify & media integrations
+│   └── scoringAlgorithms.ts     # Archetypes, Flow Minutes & Aura logic
+├── types.ts                     # TypeScript data models
+└── constants.ts                 # Mock data & fallback configurations
 ```
 
 ---
 
-## Build & Deploy
+## 🤝 Contributing
 
-```bash
-# Production build
-npm run build
+We ❤️ contributions! **Developer Wrapped is an open community project** and we welcome developers, designers, and creators from all around the world.
 
-# Start production server
-npm start
-```
+Whether you want to:
+- 🎨 Design new cinematic slides or visualizer effects
+- 🎧 Expand Spotify, Apple Music, YouTube Music, or Last.fm integrations
+- 📺 Integrate media trackers (MyAnimeList, Anilist, Trakt, Steam)
+- 🧠 Fine-tune Vibe Coder algorithms, flow metrics, and developer personas
+- 🌐 Add multi-language translations and accessibility features
+- 🐛 Fix bugs or optimize performance
 
-Deploy to any platform that supports Next.js:
-- **Vercel** (recommended - zero config)
-- **Netlify**
-- **Railway**
-- **Cloudflare Pages**
+Check out our [Contributing Guidelines](CONTRIBUTING.md) to get started!
 
-### Vercel Environment Variables
-Add these in your Vercel project settings:
-- `NEXTAUTH_URL`
-- `NEXTAUTH_SECRET`
-- `GITHUB_CLIENT_ID`
-- `GITHUB_CLIENT_SECRET`
-- `GITLAB_CLIENT_ID`
-- `GITLAB_CLIENT_SECRET`
+### Quick Contribution Steps
+
+1. **Fork the repository** on GitHub.
+2. **Clone your fork**:
+   ```bash
+   git clone https://github.com/<your-username>/developer-wrapped.git
+   cd developer-wrapped
+   ```
+3. **Create your feature branch**:
+   ```bash
+   git checkout -b feat/my-new-slide
+   ```
+4. **Make your changes, commit, and push**:
+   ```bash
+   git push origin feat/my-new-slide
+   ```
+5. **Open a Pull Request** and share your creation with the community!
 
 ---
 
-## License
+## 👥 Contributors
 
-**MIT License with Attribution** — see [LICENSE](LICENSE) for full text.
+A huge thank you to everyone who helps make Developer Wrapped an extraordinary celebration of code! 🌟
 
-### Attribution Required
+<p align="center">
+  <a href="https://github.com/msrishav-28/developer-wrapped/graphs/contributors">
+    <img src="https://contrib.rocks/image?repo=msrishav-28/developer-wrapped" alt="Developer Wrapped Contributors" />
+  </a>
+</p>
 
-If you use, modify, or build upon this project, you **MUST**:
+*Join the community and add your mark! All contributors are welcome.*
 
-1. **Credit the original author** — Include "Based on [GitStory](https://github.com/PankajKumardev/gitstory-2025) by [Pankaj Kumar](https://github.com/PankajKumardev)" in your README
-2. **Link to the original repo** — https://github.com/PankajKumardev/gitstory-2025
-3. **Do NOT claim original authorship** — This includes Product Hunt, social media, or any other platform
-4. **Do NOT remove copyright notices** — Keep the license file and copyright comments
+---
 
-### Why This Matters
+## 📜 License
 
-This project took significant effort to create. If you found it useful, please:
-- **Star this repo**
-- **Credit the original** when sharing
-- **Tag @pankajkumar_dev** when posting about it
-
-Copyright (c) 2024-2025 [Pankaj Kumar](https://github.com/PankajKumardev)
+This project is licensed under the **MIT License** — free and open for the entire developer community. See the [LICENSE](LICENSE) file for details.
 
 ---
 
 <div align="center">
 
-**Made for developers who ship**
+**Built with 💜 for developers who ship.**
 
-*Star this repo if you found it useful!*
+*Star this repository if you love it!*
 
-[Try Developer Wrapped 2025](https://gitstory.pankajk.tech/) | [Twitter](https://twitter.com/pankajkumar_dev)
+[GitHub Repository](https://github.com/msrishav-28/developer-wrapped)
 
 </div>
