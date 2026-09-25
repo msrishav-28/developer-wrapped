@@ -5,7 +5,10 @@ import {
   getTopLanguages, 
   calculateRepoScore, 
   calculateArchetype,
-  calculateProductivity 
+  calculateProductivity,
+  calculateFlowMinutes,
+  calculateVibeScore,
+  generateAuraColors
 } from "./scoringAlgorithms";
 
 const GITHUB_API_BASE = "/api/github";
@@ -434,7 +437,11 @@ export const fetchUserStory = async (username: string, year: number = new Date()
         totalStars: totalStars
     };
 
-    const archetype = calculateArchetype(contributionBreakdown, communityStats, totalCommits, productivity, weekdayStats);
+    const vibeScore = calculateVibeScore(ownedRepos);
+    const flowStateMinutes = calculateFlowMinutes(events);
+    const auraColors = generateAuraColors(topLanguages);
+
+    const archetype = calculateArchetype(contributionBreakdown, communityStats, totalCommits, productivity, weekdayStats, vibeScore, topLanguages.length);
 
     return {
       username: user.login,
@@ -451,7 +458,10 @@ export const fetchUserStory = async (username: string, year: number = new Date()
       productivity,
       archetype,
       contributionBreakdown,
-      community: communityStats
+      community: communityStats,
+      flowStateMinutes,
+      vibeScore,
+      auraColors
     };
 
   } catch (error) {

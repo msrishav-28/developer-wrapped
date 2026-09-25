@@ -4,7 +4,10 @@ import {
   getTopLanguages, 
   calculateRepoScore, 
   calculateArchetype,
-  calculateProductivity 
+  calculateProductivity,
+  calculateFlowMinutes,
+  calculateVibeScore,
+  generateAuraColors
 } from "./scoringAlgorithms";
 
 const GITLAB_API_BASE = "https://gitlab.com/api/v4";
@@ -213,8 +216,12 @@ export const fetchGitLabUserStory = async (username: string, year: number = new 
       totalStars: totalStars
     };
 
+    const vibeScore = calculateVibeScore(repoLikeProjects);
+    const flowStateMinutes = calculateFlowMinutes(events);
+    const auraColors = generateAuraColors(topLanguages);
+
     // E. Archetype
-    const archetype = calculateArchetype(contributionBreakdown, communityStats, totalCommits, productivity, weekdayStats);
+    const archetype = calculateArchetype(contributionBreakdown, communityStats, totalCommits, productivity, weekdayStats, vibeScore, topLanguages.length);
 
     return {
       username: user.username,
@@ -231,7 +238,10 @@ export const fetchGitLabUserStory = async (username: string, year: number = new 
       productivity,
       archetype,
       contributionBreakdown,
-      community: communityStats
+      community: communityStats,
+      flowStateMinutes,
+      vibeScore,
+      auraColors
     };
 
   } catch (error) {

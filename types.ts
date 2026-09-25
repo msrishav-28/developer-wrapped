@@ -37,6 +37,9 @@ export interface GitStoryData {
   username: string;
   avatarUrl: string;
   year: number;
+  flowStateMinutes: number;
+  vibeScore: number;
+  auraColors: string[];
   totalCommits: number;
   longestStreak: number;
   busiestDay: string; // e.g., "Wednesdays"

@@ -161,7 +161,9 @@ export function calculateArchetype(
   community: CommunityStats,
   totalCommits: number,
   productivity: { peakHour: number },
-  weekdayStats: number[]
+  weekdayStats: number[],
+  vibeScore: number = 0,
+  languageCount: number = 1
 ): string {
   const totalActivity = breakdown.commits + breakdown.prs + breakdown.issues + breakdown.reviews;
   
@@ -173,9 +175,16 @@ export function calculateArchetype(
   const totalWeekCommits = weekdayStats.reduce((a, b) => a + b, 0);
   const weekendPercentage = totalWeekCommits > 0 ? (weekendCommits / totalWeekCommits) * 100 : 0;
   
+  const isMidnight = productivity.peakHour >= 23 || productivity.peakHour <= 4;
+
+  if (vibeScore >= 40) return "The Prompt Alchemist";
+  if (isMidnight && vibeScore >= 20) return "The Midnight Vibe Coder";
+  if (isMidnight) return "The Night Owl";
+  if (languageCount >= 5) return "The Lo-Fi Polyglot";
+  if (prPercentage > 20 && totalActivity > 100) return "The 10x Ship-It Specialist";
+  
   if (prPercentage > 20) return "The Pull Request Pro";
   if (reviewPercentage > 10) return "The Reviewer";
-  if (productivity.peakHour >= 22 || productivity.peakHour <= 4) return "The Night Owl";
   if (productivity.peakHour >= 5 && productivity.peakHour <= 11) return "The Early Bird";
   if (weekendPercentage > 35) return "The Weekend Warrior";
   if (totalCommits >= 1200) return "The Grid Painter";
@@ -212,4 +221,79 @@ export function calculateProductivity(hourCounts: Record<number, number>): {
   }
   
   return { timeOfDay, peakHour };
+}
+
+export function calculateFlowMinutes(events: any[]): number {
+  if (!events || events.length === 0) return 0;
+  
+  // Extract push events and sort by time
+  const timestamps = events
+    .filter(e => e.type === 'PushEvent' || e.action_name === 'pushed to' || e.action_name === 'pushed new')
+    .map(e => new Date(e.created_at).getTime())
+    .sort((a, b) => a - b);
+    
+  if (timestamps.length === 0) return 0;
+  if (timestamps.length === 1) return 30; // base assumption
+  
+  let flowMinutes = 0;
+  let currentSessionStart = timestamps[0];
+  let lastCommitTime = timestamps[0];
+  
+  for (let i = 1; i < timestamps.length; i++) {
+    const diffMins = (timestamps[i] - lastCommitTime) / (1000 * 60);
+    
+    if (diffMins <= 90) {
+      // Still in flow
+      lastCommitTime = timestamps[i];
+    } else {
+      // Flow broken, tally up the session
+      const sessionLength = Math.max(30, (lastCommitTime - currentSessionStart) / (1000 * 60));
+      flowMinutes += sessionLength;
+      
+      // Start new session
+      currentSessionStart = timestamps[i];
+      lastCommitTime = timestamps[i];
+    }
+  }
+  
+  // Add final session
+  const finalSessionLength = Math.max(30, (lastCommitTime - currentSessionStart) / (1000 * 60));
+  flowMinutes += finalSessionLength;
+  
+  return Math.round(flowMinutes);
+}
+
+const VIBE_KEYWORDS = ['ai', 'llm', 'cursor', 'copilot', 'claude', 'v0', 'agent', 'rag', 'prompt', 'openai', 'anthropic'];
+
+export function calculateVibeScore(repos: any[]): number {
+  let score = 0;
+  
+  repos.forEach(repo => {
+    const textToSearch = `${repo.name} ${repo.description || ''} ${(repo.topics || []).join(' ')}`.toLowerCase();
+    
+    VIBE_KEYWORDS.forEach(keyword => {
+      // basic word boundary check
+      const regex = new RegExp(`\\b${keyword}\\b`, 'g');
+      const matches = textToSearch.match(regex);
+      if (matches) {
+        score += matches.length * 10; 
+      }
+    });
+  });
+  
+  return Math.min(score, 100);
+}
+
+export function generateAuraColors(topLanguages: { color: string }[]): string[] {
+  const defaultColors = ['#ff0080', '#7928ca'];
+  
+  if (!topLanguages || topLanguages.length === 0) {
+    return defaultColors;
+  }
+  
+  if (topLanguages.length === 1) {
+    return [topLanguages[0].color, defaultColors[1]];
+  }
+  
+  return topLanguages.slice(0, 3).map(l => l.color);
 }
