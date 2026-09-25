@@ -265,12 +265,6 @@ Maintained and evolved by **M S Rishav Subhin**.
 - **GitHub:** https://github.com/msrishav-28
 - **LinkedIn:** https://linkedin.com/in/m-s-rishav-subhin
 - **X (Twitter):** https://x.com/msrishav_28
-- **Hugging Face:** https://huggingface.co/msrishav
-- **Peerlist:** https://peerlist.io/msrishav289
-- **Product Hunt:** https://www.producthunt.com/@m_s_rishav_subhin
-- **Dev.to:** https://dev.to/msrishav-28
-- **Hashnode:** https://hashnode.com/@msrishav-28
-- **ORCID:** https://orcid.org/0009-0002-7431-9666
 
 ---
 
