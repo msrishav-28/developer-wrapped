@@ -15,7 +15,7 @@
 </p>
 
 <p align="center">
-  <strong>Transform your GitHub and GitLab contributions into an immersive, Instagram Stories-style cinematic experience with ambient audio, coding auras, flow state analytics, and Spotify media insights.</strong>
+  <strong>Transform your GitHub and GitLab contributions into an immersive, Instagram Stories-style cinematic experience with ambient audio, coding auras, flow state analytics, and Spotify media insights. Hosted seamlessly on Vercel.</strong>
 </p>
 
 <p align="center">
@@ -24,6 +24,8 @@
   <a href="#quick-start">Quick Start</a> •
   <a href="#contributing">Contributing</a> •
   <a href="#contributors">Contributors</a> •
+  <a href="#acknowledgements">Acknowledgements</a> •
+  <a href="#developer">Developer</a> •
   <a href="#license">License</a>
 </p>
 
@@ -35,19 +37,19 @@
 
 | Feature | Description |
 |---------|-------------|
-| **Evergreen Engine** | Select and review any year (2024, 2025, 2026+) dynamically |
-| **Cinematic Experience** | 13 beautifully animated slides with Instagram Stories-like navigation |
-| **Flow State Analytics** | Intelligent deep-work calculation measuring continuous coding blocks |
-| **Audio Aura Visualizer** | Mesh gradient aura animated from your top languages and coding temperament |
-| **Top Tracks & Vinyl** | Repositories displayed as Billboard top hits with a spinning 3D vinyl record |
-| **Ambient Lo-Fi Soundscape** | Background lo-fi coding audio with instant mute/unmute controls |
-| **Binge Coder & Spotify** | Connect Spotify to see your top soundtrack, paired with anime & movie insights |
-| **Live GitHub & GitLab Data** | Real-time stats fetched from GitHub/GitLab API — commits, PRs, issues, reviews |
-| **OAuth Authentication** | One-click login with GitHub, GitLab, or Spotify |
-| **Dark/Light Theme** | Fluid theme switching across all slides and controls |
-| **Vibe Personas** | Smart archetypes detecting AI usage, late-night coding, and language breadth |
-| **Velocity Charts** | Animated contribution velocity charts powered by Recharts |
-| **Poster Export & Share** | Downloadable high-res movie poster with one-click social sharing |
+| **Evergreen Engine** | Select and review any year dynamically |
+| **Cinematic Experience** | 13 animated slides with Stories-style navigation |
+| **Flow State Analytics** | Deep-work calculation measuring continuous coding blocks |
+| **Audio Aura Visualizer** | Mesh gradient aura animated from language stack and coding temperament |
+| **Top Tracks & Vinyl** | Repositories displayed as Billboard hits with spinning 3D vinyl record |
+| **Ambient Soundscape** | Background lo-fi coding audio with instant volume controls |
+| **Binge Coder & Spotify** | Connect Spotify to see your top soundtrack, paired with anime and movie insights |
+| **Live GitHub & GitLab Data** | Real-time stats fetched from GitHub and GitLab APIs |
+| **OAuth Authentication** | Login with GitHub, GitLab, or Spotify |
+| **Theme Switching** | Seamless dark and light modes across all slides and controls |
+| **Vibe Personas** | Archetypes detecting AI tooling, night coding, and stack breadth |
+| **Velocity Charts** | Contribution velocity charts powered by Recharts |
+| **Poster Export & Share** | Downloadable high-resolution poster with one-click social sharing |
 
 ---
 
@@ -57,35 +59,35 @@ Experience your year through **13 cinematic slides**:
 
 | # | Slide | What It Shows |
 |---|-------|---------------|
-| 1 | **Title** | Your username & avatar with dramatic reveal |
+| 1 | **Title** | Your username and avatar with dramatic reveal |
 | 2 | **Velocity** | Animated area chart of daily commits |
 | 3 | **Grid** | Full-year contribution heatmap |
 | 4 | **Composition** | Breakdown: Commits vs PRs vs Issues vs Reviews |
 | 5 | **Routine** | Your busiest day of the week |
-| 6 | **Productivity** | Peak coding hours & time-of-day persona |
+| 6 | **Productivity** | Peak coding hours and time-of-day persona |
 | 7 | **Community** | Followers, stars, and repository statistics |
 | 8 | **Aura** | Dynamic mesh gradient visualizer with Flow State Minutes and Vibe Score |
-| 9 | **Languages** | Top programming languages & polyglot breakdown |
+| 9 | **Languages** | Top programming languages and polyglot breakdown |
 | 10 | **Top Tracks** | Your repositories ranked and styled as music tracks |
 | 11 | **Vinyl Record** | 3D spinning vinyl record spotlighting your Magnum Opus repository |
 | 12 | **The Binge Coder** | What fueled your flow state: Spotify tracks, anime, and movies |
-| 13 | **Poster** | Exportable festival/movie poster with sharing controls |
+| 13 | **Poster** | Exportable festival poster with sharing controls |
 
 ---
 
 ## Archetypes
 
-Based on your **coding habits, commit timing, and stack**, you'll be assigned a persona:
+Based on your coding habits, commit timing, and stack, you will be assigned a persona:
 
 | Archetype | Criteria |
 |-----------|----------|
 | **The Prompt Alchemist** | Heavy AI tooling, modern stack, polyglot workflow |
 | **The Midnight Vibe Coder** | 60%+ activity late night between 11 PM and 4 AM |
 | **The Lo-Fi Polyglot** | Smoothly orchestrating 4+ programming languages |
-| **The Pull Request Pro** | High collaboration with >20% of activity in PRs |
-| **The Reviewer** | Frequent code reviewer (>10% of activity) |
-| **The Weekend Warrior** | >35% commits pushed on weekends |
-| **The Grid Painter** | 1200+ commits (green squares everywhere!) |
+| **The Pull Request Pro** | High collaboration with over 20% of activity in PRs |
+| **The Reviewer** | Frequent code reviewer |
+| **The Weekend Warrior** | Over 35% commits pushed on weekends |
+| **The Grid Painter** | 1200+ commits with consistent green squares |
 | **The Consistent** | 400+ commits, steady daily contributor |
 | **The Community Star** | High star and follower count across repositories |
 | **The Tinkerer** | Curious explorer shipping across multiple experiments |
@@ -110,7 +112,7 @@ cp .env.example .env.local
 npm run dev
 ```
 
-Open **http://localhost:3000** and enter any GitHub or GitLab username!
+Open **http://localhost:3000** and enter any GitHub or GitLab username.
 
 > **Tip:** Type `demo` to preview the full cinematic experience with mock data.
 
@@ -168,47 +170,47 @@ NEXT_PUBLIC_SPOTIFY_CLIENT_ID=your-spotify-client-id
 developer-wrapped/
 ├── app/
 │   ├── api/auth/[...nextauth]/  # NextAuth API route
-│   ├── layout.tsx               # Root layout with providers & metadata
-│   ├── page.tsx                 # Main landing page with OAuth & Year picker
-│   ├── globals.css              # Tailwind + custom animations
+│   ├── layout.tsx               # Root layout with providers and metadata
+│   ├── page.tsx                 # Main landing page with OAuth and Year picker
+│   ├── globals.css              # Tailwind and custom animations
 │   └── sitemap.ts               # Dynamic sitemap
 ├── components/
-│   ├── StoryContainer.tsx       # Slide orchestrator, ambient audio & controls
+│   ├── StoryContainer.tsx       # Slide orchestrator, ambient audio and controls
 │   ├── SlideLayout.tsx          # Theme-aware slide wrapper
 │   └── slides/                  # 13 cinematic slide components
 │       ├── AuraSlide.tsx        # Mesh gradient flow visualizer
 │       ├── VinylSlide.tsx       # 3D spinning vinyl record
 │       ├── TopTracksSlide.tsx   # Billboard-style repository list
-│       ├── BingeSlide.tsx       # Spotify & media fuel showcase
-│       └── PosterSlide.tsx      # Exportable poster with Flow Mins
+│       ├── BingeSlide.tsx       # Spotify and media showcase
+│       └── PosterSlide.tsx      # Exportable poster with Flow Minutes
 ├── context/
-│   └── ThemeContext.tsx         # Dark/light theme context
+│   └── ThemeContext.tsx         # Dark and light theme context
 ├── lib/
 │   └── auth.ts                  # NextAuth configuration
 ├── services/
-│   ├── githubService.ts         # GitHub API integration & GraphQL
+│   ├── githubService.ts         # GitHub API integration and GraphQL
 │   ├── gitlabService.ts         # GitLab API integration
-│   ├── mediaService.ts          # Spotify & media integrations
-│   └── scoringAlgorithms.ts     # Archetypes, Flow Minutes & Aura logic
+│   ├── mediaService.ts          # Spotify and media integrations
+│   └── scoringAlgorithms.ts     # Archetypes, Flow Minutes and Aura logic
 ├── types.ts                     # TypeScript data models
-└── constants.ts                 # Mock data & fallback configurations
+└── constants.ts                 # Mock data and fallback configurations
 ```
 
 ---
 
-## 🤝 Contributing
+## Contributing
 
-We ❤️ contributions! **Developer Wrapped is an open community project** and we welcome developers, designers, and creators from all around the world.
+Contributions are warmly welcome. Developer Wrapped is an open community project and welcomes developers, designers, and creators from around the world.
 
 Whether you want to:
-- 🎨 Design new cinematic slides or visualizer effects
-- 🎧 Expand Spotify, Apple Music, YouTube Music, or Last.fm integrations
-- 📺 Integrate media trackers (MyAnimeList, Anilist, Trakt, Steam)
-- 🧠 Fine-tune Vibe Coder algorithms, flow metrics, and developer personas
-- 🌐 Add multi-language translations and accessibility features
-- 🐛 Fix bugs or optimize performance
+- Design new cinematic slides or visualizer effects
+- Expand Spotify, Apple Music, YouTube Music, or Last.fm integrations
+- Integrate media trackers (MyAnimeList, Anilist, Trakt, Steam)
+- Fine-tune Vibe Coder algorithms, flow metrics, and developer personas
+- Add multi-language translations and accessibility features
+- Fix bugs or optimize performance
 
-Check out our [Contributing Guidelines](CONTRIBUTING.md) to get started!
+Check out our [Contributing Guidelines](CONTRIBUTING.md) to get started.
 
 ### Quick Contribution Steps
 
@@ -226,13 +228,13 @@ Check out our [Contributing Guidelines](CONTRIBUTING.md) to get started!
    ```bash
    git push origin feat/my-new-slide
    ```
-5. **Open a Pull Request** and share your creation with the community!
+5. **Open a Pull Request** and share your creation with the community.
 
 ---
 
-## 👥 Contributors
+## Contributors
 
-A huge thank you to everyone who helps make Developer Wrapped an extraordinary celebration of code! 🌟
+A huge thank you to everyone who helps make Developer Wrapped an extraordinary celebration of code:
 
 <p align="center">
   <a href="https://github.com/msrishav-28/developer-wrapped/graphs/contributors">
@@ -240,11 +242,39 @@ A huge thank you to everyone who helps make Developer Wrapped an extraordinary c
   </a>
 </p>
 
-*Join the community and add your mark! All contributors are welcome.*
+All contributors are welcome to submit pull requests and join the community.
 
 ---
 
-## 📜 License
+## Acknowledgements & Prior Work
+
+This project builds upon the foundational concept of **GitStory (2025)** originally created by **[Pankaj Kumar](https://github.com/PankajKumardev)**:
+- Original Repository: [https://github.com/PankajKumardev/gitstory-2025](https://github.com/PankajKumardev/gitstory-2025)
+- Original Creator: [Pankaj Kumar](https://github.com/PankajKumardev)
+
+We express our sincere appreciation and due credit to Pankaj Kumar for pioneering the original concept.
+
+---
+
+## Lead Developer & Maintainer
+
+Maintained and evolved by **M S Rishav Subhin**.
+
+### Official Digital Links & Profiles
+- **Website:** https://portfolio-msrishav.vercel.app/
+- **GitHub:** https://github.com/msrishav-28
+- **LinkedIn:** https://linkedin.com/in/m-s-rishav-subhin
+- **X (Twitter):** https://x.com/msrishav_28
+- **Hugging Face:** https://huggingface.co/msrishav
+- **Peerlist:** https://peerlist.io/msrishav289
+- **Product Hunt:** https://www.producthunt.com/@m_s_rishav_subhin
+- **Dev.to:** https://dev.to/msrishav-28
+- **Hashnode:** https://hashnode.com/@msrishav-28
+- **ORCID:** https://orcid.org/0009-0002-7431-9666
+
+---
+
+## License
 
 This project is licensed under the **MIT License** — free and open for the entire developer community. See the [LICENSE](LICENSE) file for details.
 
@@ -252,9 +282,9 @@ This project is licensed under the **MIT License** — free and open for the ent
 
 <div align="center">
 
-**Built with 💜 for developers who ship.**
+**Built for developers who ship.**
 
-*Star this repository if you love it!*
+*Star this repository if you find it inspiring.*
 
 [GitHub Repository](https://github.com/msrishav-28/developer-wrapped)
 
