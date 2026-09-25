@@ -9,10 +9,11 @@ import {
   calculateVibeScore,
   generateAuraColors
 } from "./scoringAlgorithms";
+import { fetchMediaStory } from "./mediaService";
 
 const GITLAB_API_BASE = "https://gitlab.com/api/v4";
 
-export const fetchGitLabUserStory = async (username: string, year: number = new Date().getFullYear(), token: string): Promise<GitStoryData> => {
+export const fetchGitLabUserStory = async (username: string, year: number = new Date().getFullYear(), token: string, spotifyToken?: string): Promise<GitStoryData> => {
   const headers: HeadersInit = {
     'Authorization': `Bearer ${token}`,
     'Content-Type': 'application/json',
@@ -219,6 +220,7 @@ export const fetchGitLabUserStory = async (username: string, year: number = new 
     const vibeScore = calculateVibeScore(repoLikeProjects);
     const flowStateMinutes = calculateFlowMinutes(events);
     const auraColors = generateAuraColors(topLanguages);
+    const mediaStory = await fetchMediaStory(spotifyToken);
 
     // E. Archetype
     const archetype = calculateArchetype(contributionBreakdown, communityStats, totalCommits, productivity, weekdayStats, vibeScore, topLanguages.length);
@@ -241,7 +243,8 @@ export const fetchGitLabUserStory = async (username: string, year: number = new 
       community: communityStats,
       flowStateMinutes,
       vibeScore,
-      auraColors
+      auraColors,
+      mediaStory
     };
 
   } catch (error) {

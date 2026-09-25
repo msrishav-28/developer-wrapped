@@ -10,6 +10,7 @@ import {
   calculateVibeScore,
   generateAuraColors
 } from "./scoringAlgorithms";
+import { fetchMediaStory } from "./mediaService";
 
 const GITHUB_API_BASE = "/api/github";
 const makeGitHubUrl = (endpoint: string) => `${GITHUB_API_BASE}?endpoint=${encodeURIComponent(endpoint)}`;
@@ -95,7 +96,7 @@ const fetchContributionsWithGraphQL = async (username: string, year: number, hea
     }
 };
 
-export const fetchUserStory = async (username: string, year: number = new Date().getFullYear(), token?: string): Promise<GitStoryData> => {
+export const fetchUserStory = async (username: string, year: number = new Date().getFullYear(), token?: string, spotifyToken?: string): Promise<GitStoryData> => {
   if (username.toLowerCase() === 'demo') {
       return new Promise((resolve) => setTimeout(() => resolve(MOCK_DATA), 1500));
   }
@@ -440,6 +441,7 @@ export const fetchUserStory = async (username: string, year: number = new Date()
     const vibeScore = calculateVibeScore(ownedRepos);
     const flowStateMinutes = calculateFlowMinutes(events);
     const auraColors = generateAuraColors(topLanguages);
+    const mediaStory = await fetchMediaStory(spotifyToken);
 
     const archetype = calculateArchetype(contributionBreakdown, communityStats, totalCommits, productivity, weekdayStats, vibeScore, topLanguages.length);
 
@@ -461,7 +463,8 @@ export const fetchUserStory = async (username: string, year: number = new Date()
       community: communityStats,
       flowStateMinutes,
       vibeScore,
-      auraColors
+      auraColors,
+      mediaStory
     };
 
   } catch (error) {

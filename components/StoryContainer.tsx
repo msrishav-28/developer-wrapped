@@ -16,6 +16,7 @@ import { TopTracksSlide } from './slides/TopTracksSlide';
 import { VinylSlide } from './slides/VinylSlide';
 import { PosterSlide } from './slides/PosterSlide';
 import { AuraSlide } from './slides/AuraSlide';
+import { BingeSlide } from './slides/BingeSlide';
 import { X, Sun, Moon, Play, Pause, Share2, Volume2, VolumeX } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -31,7 +32,7 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
   const [isPaused, setIsPaused] = useState(false);
   const [isMuted, setIsMuted] = useState(false);
   const audioRef = useRef<HTMLAudioElement>(null);
-  const totalSlides = 12;
+  const totalSlides = 13;
   const progressIntervalRef = useRef<number | null>(null);
   const [progress, setProgress] = useState(0);
   
@@ -159,6 +160,7 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
       case SlideType.LANGUAGES: return <LanguagesSlide data={data} />;
       case SlideType.TOP_TRACKS: return <TopTracksSlide data={data} />;
       case SlideType.REPO: return <VinylSlide data={data} />;
+      case SlideType.BINGE: return <BingeSlide data={data} />;
       case SlideType.POSTER: return <PosterSlide data={data} />;
       default: return null;
     }

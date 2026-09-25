@@ -33,6 +33,19 @@ export interface CommunityStats {
   publicRepos: number;
 }
 
+export interface SpotifyTrack {
+  name: string;
+  artist: string;
+  albumArt: string;
+  url: string;
+}
+
+export interface MediaStory {
+  topSpotifyTracks?: SpotifyTrack[];
+  topAnime?: string[];
+  topMovies?: string[];
+}
+
 export interface GitStoryData {
   username: string;
   avatarUrl: string;
@@ -52,6 +65,7 @@ export interface GitStoryData {
   archetype: string; // The calculated persona (e.g., "The Architect")
   contributionBreakdown: ContributionBreakdown;
   community: CommunityStats;
+  mediaStory?: MediaStory;
 }
 
 export enum SlideType {
@@ -66,5 +80,6 @@ export enum SlideType {
   LANGUAGES = 8,
   TOP_TRACKS = 9,
   REPO = 10,
-  POSTER = 11,
+  BINGE = 11,
+  POSTER = 12,
 }

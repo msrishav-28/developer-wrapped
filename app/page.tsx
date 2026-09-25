@@ -22,6 +22,7 @@ export default function Home() {
   const [username, setUsername] = useState('')
   const [year, setYear] = useState<number>(new Date().getFullYear())
   const [token, setToken] = useState('')
+  const [spotifyToken, setSpotifyToken] = useState<string>('')
   const [showTokenInput, setShowTokenInput] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [storyData, setStoryData] = useState<GitStoryData | null>(null)
@@ -35,6 +36,19 @@ export default function Home() {
       .then(data => setStarCount(data.stargazers_count || 0))
       .catch(() => setStarCount(null))
   }, [])
+  
+  useEffect(() => {
+    if (typeof window !== 'undefined') {
+      const hash = window.location.hash;
+      if (hash) {
+        const tokenMatch = hash.match(/access_token=([^&]*)/);
+        if (tokenMatch) {
+          setSpotifyToken(tokenMatch[1]);
+          window.history.replaceState({}, document.title, window.location.pathname);
+        }
+      }
+    }
+  }, []);
   
   const effectiveToken = session?.accessToken || token.trim()
   
@@ -89,9 +103,9 @@ export default function Home() {
       let data: GitStoryData
       
       if (session?.provider === 'gitlab' && session?.accessToken) {
-        data = await fetchGitLabUserStory(username.trim(), year, session.accessToken)
+        data = await fetchGitLabUserStory(username.trim(), year, session.accessToken, spotifyToken)
       } else {
-        data = await fetchUserStory(username.trim(), year, effectiveToken || undefined)
+        data = await fetchUserStory(username.trim(), year, effectiveToken || undefined, spotifyToken)
       }
       
       setStoryData(data)
@@ -260,6 +274,20 @@ export default function Home() {
                 <span className={`text-xs ${isDark ? 'text-neutral-600' : 'text-neutral-400'}`}>for private repos</span>
               </>
             )}
+          </div>
+
+          <div className="flex items-center justify-center gap-2 mt-4">
+            <button
+              type="button"
+              onClick={() => {
+                const clientId = process.env.NEXT_PUBLIC_SPOTIFY_CLIENT_ID || 'MOCK_SPOTIFY_CLIENT_ID';
+                const redirectUri = window.location.origin;
+                window.location.href = `https://accounts.spotify.com/authorize?client_id=${clientId}&response_type=token&redirect_uri=${encodeURIComponent(redirectUri)}&scope=user-top-read`;
+              }}
+              className={`flex items-center gap-2 px-5 py-2.5 rounded-full text-sm font-medium transition-all ${spotifyToken ? 'bg-green-500 text-white' : isDark ? 'bg-neutral-950 text-green-400 border border-green-900/50 hover:bg-neutral-900' : 'bg-green-50 text-green-600 border border-green-200 hover:bg-green-100'}`}
+            >
+              {spotifyToken ? 'Spotify Connected' : 'Connect Spotify'}
+            </button>
           </div>
 
           {!session && (
