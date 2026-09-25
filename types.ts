@@ -62,8 +62,9 @@ export enum SlideType {
   ROUTINE = 4,
   PRODUCTIVITY = 5,
   COMMUNITY = 6,
-  LANGUAGES = 7,
-  TOP_REPOS = 8, // New slide for top 5 repos
-  REPO = 9,
-  POSTER = 10,
+  AURA = 7,
+  LANGUAGES = 8,
+  TOP_TRACKS = 9,
+  REPO = 10,
+  POSTER = 11,
 }

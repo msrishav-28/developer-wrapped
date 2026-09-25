@@ -183,6 +183,14 @@ export const PosterSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
                   <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Top Lang</div>
                   <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.topLanguages[0]?.name || "N/A"}</div>
                </div>
+               <div>
+                  <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Flow Mins</div>
+                  <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.flowStateMinutes.toLocaleString()}</div>
+               </div>
+               <div>
+                  <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Vibe Match</div>
+                  <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.vibeScore}%</div>
+               </div>
              </div>
 
              <div>

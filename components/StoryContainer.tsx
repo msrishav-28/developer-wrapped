@@ -12,10 +12,11 @@ import { RoutineSlide } from './slides/RoutineSlide';
 import { ProductivitySlide } from './slides/ProductivitySlide';
 import { CommunitySlide } from './slides/CommunitySlide';
 import { LanguagesSlide } from './slides/LanguagesSlide';
-import { TopReposSlide } from './slides/TopReposSlide';
-import { RepoSlide } from './slides/RepoSlide';
+import { TopTracksSlide } from './slides/TopTracksSlide';
+import { VinylSlide } from './slides/VinylSlide';
 import { PosterSlide } from './slides/PosterSlide';
-import { X, Sun, Moon, Play, Pause, Share2 } from 'lucide-react';
+import { AuraSlide } from './slides/AuraSlide';
+import { X, Sun, Moon, Play, Pause, Share2, Volume2, VolumeX } from 'lucide-react';
 import { useTheme } from '@/context/ThemeContext';
 
 interface StoryContainerProps {
@@ -28,7 +29,9 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
   const isDark = theme === 'dark';
   const [currentSlide, setCurrentSlide] = useState(0);
   const [isPaused, setIsPaused] = useState(false);
-  const totalSlides = 11;
+  const [isMuted, setIsMuted] = useState(false);
+  const audioRef = useRef<HTMLAudioElement>(null);
+  const totalSlides = 12;
   const progressIntervalRef = useRef<number | null>(null);
   const [progress, setProgress] = useState(0);
   
@@ -152,9 +155,10 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
       case SlideType.ROUTINE: return <RoutineSlide data={data} />;
       case SlideType.PRODUCTIVITY: return <ProductivitySlide data={data} />;
       case SlideType.COMMUNITY: return <CommunitySlide data={data} />;
+      case SlideType.AURA: return <AuraSlide data={data} />;
       case SlideType.LANGUAGES: return <LanguagesSlide data={data} />;
-      case SlideType.TOP_REPOS: return <TopReposSlide data={data} />;
-      case SlideType.REPO: return <RepoSlide data={data} />;
+      case SlideType.TOP_TRACKS: return <TopTracksSlide data={data} />;
+      case SlideType.REPO: return <VinylSlide data={data} />;
       case SlideType.POSTER: return <PosterSlide data={data} />;
       default: return null;
     }
@@ -191,6 +195,13 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
           </button>
         )}
         <button
+          onClick={(e) => { e.stopPropagation(); setIsMuted(prev => !prev); }}
+          className={`p-2 rounded-lg transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
+          aria-label="Toggle audio"
+        >
+          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+        </button>
+        <button
           onClick={(e) => { e.stopPropagation(); toggleTheme(); }}
           className={`p-2 rounded-lg transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
           aria-label="Toggle theme"
@@ -211,6 +222,15 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
           {renderSlide()}
         </div>
       </AnimatePresence>
+      
+      {/* Ambient Lo-Fi Audio Track */}
+      <audio 
+        ref={audioRef} 
+        src="https://cdn.pixabay.com/audio/2022/05/27/audio_1808fbf07a.mp3" 
+        loop 
+        autoPlay 
+        muted={isMuted} 
+      />
     </div>
   );
 };
