@@ -51,8 +51,6 @@
 body {
   background-color: var(--bg-primary);
   color: var(--text-primary);
-  overflow: hidden;
-  touch-action: none;
   font-family: var(--font-inter-tight), "Inter Tight", sans-serif;
   transition: background-color 0.3s ease, color 0.3s ease;
 }

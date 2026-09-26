@@ -168,7 +168,7 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
 
   return (
     <div 
-      className={`fixed inset-0 w-full h-[100dvh] select-none cursor-pointer transition-colors ${isDark ? 'bg-black' : 'bg-white'}`}
+      className={`fixed inset-0 w-full h-[100dvh] overflow-hidden touch-none select-none cursor-pointer transition-colors ${isDark ? 'bg-black' : 'bg-white'}`}
       onPointerDown={handlePointerDown}
       onPointerUp={handlePointerUp}
       onPointerLeave={() => !isLastSlide && setIsPaused(false)}

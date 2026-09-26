@@ -17,7 +17,7 @@ export const TextReveal: React.FC<TextRevealProps> = ({ text, className = "", de
     hidden: { opacity: 0 },
     visible: (i = 1) => ({
       opacity: 1,
-      transition: { staggerChildren: 0.12, delayChildren: delay * 0.1 },
+      transition: { staggerChildren: 0.12, delayChildren: delay },
     }),
   };
 

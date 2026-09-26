@@ -21,7 +21,7 @@ export const VinylSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           className={`text-xl font-mono uppercase tracking-widest mb-12 text-center ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}
         />
 
-        <div className="relative flex justify-center items-center mb-16">
+        <div className="relative w-64 h-64 mx-auto mb-16 flex justify-center items-center">
           {/* Record Player Base */}
           <div className="absolute w-64 h-64 border-4 rounded-full border-neutral-800 opacity-20"></div>
           
@@ -46,13 +46,13 @@ export const VinylSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           </motion.div>
 
           <motion.div 
-            className="absolute -right-4 top-4"
-            initial={{ rotate: -45, transformOrigin: 'top right' }}
+            className="absolute -right-4 top-4 z-20 origin-top-right"
+            initial={{ rotate: -45 }}
             animate={{ rotate: 15 }}
             transition={{ delay: 1, duration: 1, ease: "easeOut" }}
           >
             <div className={`w-32 h-2 rounded-full ${isDark ? 'bg-neutral-300' : 'bg-neutral-400'}`}></div>
-            <div className={`w-4 h-6 absolute right-0 top-0 rounded-sm ${isDark ? 'bg-hero-blue' : 'bg-hero-blue'}`}></div>
+            <div className={`w-4 h-6 absolute right-0 top-0 -mt-2 rounded-sm ${isDark ? 'bg-hero-blue' : 'bg-hero-blue'}`}></div>
           </motion.div>
         </div>
 
