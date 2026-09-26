@@ -28,7 +28,7 @@ export const RepoSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           animate={{ rotateY: 10, opacity: 1, scale: 1 }}
           whileHover={{ rotateY: 0, scale: 1.05 }}
           transition={{ type: "spring", damping: 20, stiffness: 100, delay: 0.5 }}
-          className={`w-80 aspect-[3/4] rounded-[2rem] p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group border backdrop-blur-xl cursor-pointer ${isDark ? 'bg-neutral-900/60 border-white/20 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.1)]' : 'bg-white/60 border-black/10 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]'}`}
+          className={`w-72 md:w-80 aspect-[3/4] rounded-[2rem] p-8 flex flex-col justify-between shadow-2xl relative overflow-hidden group border backdrop-blur-xl cursor-pointer ${isDark ? 'bg-neutral-900/60 border-white/20 shadow-[0_20px_50px_-10px_rgba(255,255,255,0.1)]' : 'bg-white/60 border-black/10 shadow-[0_20px_50px_-10px_rgba(0,0,0,0.15)]'}`}
           style={{ transformStyle: "preserve-3d" }}
         >
           <div className={`absolute inset-0 bg-gradient-to-tr opacity-0 group-hover:opacity-100 transition-opacity duration-700 pointer-events-none mix-blend-overlay ${isDark ? 'from-hero-blue/40 via-transparent to-hero-purple/40' : 'from-hero-blue/20 via-transparent to-hero-purple/20'}`} />

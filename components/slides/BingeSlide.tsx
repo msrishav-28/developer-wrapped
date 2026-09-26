@@ -59,7 +59,7 @@ export const BingeSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           </motion.div>
         )}
 
-        <div className="grid grid-cols-2 gap-4">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-4 md:gap-6 w-full">
           {/* Anime Section */}
           {media.topAnime && media.topAnime.length > 0 && (
             <motion.div

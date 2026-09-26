@@ -18,27 +18,27 @@ export const VinylSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
       <div className="flex flex-col h-full w-full justify-center">
         <TextReveal 
           text="Your Platinum Record"
-          className={`text-xl font-mono uppercase tracking-widest mb-12 text-center ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}
+          className={`text-lg md:text-xl font-mono uppercase tracking-widest mb-8 md:mb-12 text-center ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}
         />
 
-        <div className="relative w-64 h-64 mx-auto mb-16 flex justify-center items-center">
+        <div className="relative w-56 h-56 md:w-64 md:h-64 mx-auto mb-8 md:mb-16 flex justify-center items-center">
           {/* Record Player Base */}
           <div className="absolute w-64 h-64 border-4 rounded-full border-neutral-800 opacity-20"></div>
           
           {/* Spinning Vinyl */}
           <motion.div 
-            className={`w-56 h-56 rounded-full flex items-center justify-center shadow-2xl overflow-hidden ${isDark ? 'bg-neutral-900 border-neutral-700' : 'bg-black border-neutral-800'} border-8 relative`}
+            className={`w-48 h-48 md:w-56 md:h-56 rounded-full flex items-center justify-center shadow-2xl overflow-hidden ${isDark ? 'bg-neutral-900 border-neutral-700' : 'bg-black border-neutral-800'} border-8 relative`}
             animate={{ rotate: 360 }}
             transition={{ duration: 4, repeat: Infinity, ease: "linear" }}
           >
             {/* Grooves */}
-            <div className="absolute inset-0 rounded-full border border-neutral-500/20 m-4"></div>
-            <div className="absolute inset-0 rounded-full border border-neutral-500/20 m-8"></div>
-            <div className="absolute inset-0 rounded-full border border-neutral-500/20 m-12"></div>
+            <div className="absolute inset-0 rounded-full border border-neutral-500/20 m-2 md:m-4 pointer-events-none"></div>
+            <div className="absolute inset-0 rounded-full border border-neutral-500/20 m-6 md:m-8 pointer-events-none"></div>
+            <div className="absolute inset-0 rounded-full border border-neutral-500/20 m-10 md:m-12 pointer-events-none"></div>
             
             {/* Center Label */}
-            <div className={`w-20 h-20 rounded-full z-10 flex items-center justify-center border-2 border-neutral-800 shadow-inner`} style={{ backgroundColor: data.topLanguages[0]?.color || '#ff0080' }}>
-              <div className="w-4 h-4 bg-black rounded-full border-2 border-neutral-600"></div>
+            <div className={`w-16 h-16 md:w-20 md:h-20 rounded-full z-10 flex items-center justify-center border-2 border-neutral-800 shadow-inner`} style={{ backgroundColor: data.topLanguages[0]?.color || '#ff0080' }}>
+              <div className="w-3 h-3 md:w-4 md:h-4 bg-black rounded-full border-2 border-neutral-600"></div>
             </div>
             
             {/* Gloss reflection */}
@@ -46,13 +46,17 @@ export const VinylSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           </motion.div>
 
           <motion.div 
-            className="absolute -right-4 top-4 z-20 origin-top-right"
+            className="absolute -right-2 top-6 md:top-8 z-20 origin-right"
             initial={{ rotate: -45 }}
             animate={{ rotate: 15 }}
             transition={{ delay: 1, duration: 1, ease: "easeOut" }}
           >
-            <div className={`w-32 h-2 rounded-full ${isDark ? 'bg-neutral-300' : 'bg-neutral-400'}`}></div>
-            <div className={`w-4 h-6 absolute right-0 top-0 -mt-2 rounded-sm ${isDark ? 'bg-hero-blue' : 'bg-hero-blue'}`}></div>
+            {/* The Arm */}
+            <div className={`w-24 md:w-32 h-2 rounded-full shadow-lg ${isDark ? 'bg-neutral-300' : 'bg-neutral-400'}`}></div>
+            {/* The Headshell/needle (at the left end) */}
+            <div className={`w-3 h-5 md:w-4 md:h-6 absolute left-0 top-1/2 -translate-y-1/2 -translate-x-1 rounded-sm shadow-md ${isDark ? 'bg-hero-blue' : 'bg-hero-blue'}`}></div>
+            {/* The Pivot Base (at the right end) */}
+            <div className={`w-6 h-6 md:w-8 md:h-8 absolute right-0 top-1/2 -translate-y-1/2 translate-x-2 rounded-full shadow-xl border-4 ${isDark ? 'bg-neutral-800 border-neutral-600' : 'bg-neutral-300 border-neutral-400'}`}></div>
           </motion.div>
         </div>
 
