@@ -42,7 +42,7 @@ export const LanguagesSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
         <div className="relative z-10 text-center">
           <TextReveal 
             text="The Palette." 
-            className={`text-xl font-mono mb-8 uppercase tracking-widest ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`} 
+            className={`text-lg font-mono mb-8 uppercase tracking-widest ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`} 
           />
 
           <TextReveal 
@@ -52,22 +52,23 @@ export const LanguagesSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
             delay={0.5}
           />
 
-          <div className="flex flex-col gap-4 items-center">
+          <div className="flex flex-col gap-4 items-center mt-8 w-full max-w-md mx-auto">
             {data.topLanguages.map((lang, i) => (
               <motion.div 
                 key={lang.name}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ delay: 1.5 + (i * 0.2) }}
-                className="flex items-center gap-4 w-full max-w-xs"
+                whileHover={{ scale: 1.02, x: 10 }}
+                transition={{ delay: 1.5 + (i * 0.1), type: "spring", damping: 20 }}
+                className={`flex items-center gap-4 w-full p-4 md:p-5 rounded-2xl border shadow-lg backdrop-blur-xl ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}
               >
                 <div 
-                  className="w-3 h-3 rounded-full shadow-[0_0_10px_currentColor]" 
-                  style={{ backgroundColor: lang.color, color: lang.color }}
+                  className="w-4 h-4 rounded-full shadow-[0_0_15px_currentColor] border-2" 
+                  style={{ backgroundColor: lang.color, color: lang.color, borderColor: isDark ? 'rgba(0,0,0,0.5)' : 'rgba(255,255,255,0.5)' }}
                 />
-                <span className={`text-xl font-sans ${isDark ? 'text-white' : 'text-black'}`}>{lang.name}</span>
-                <div className={`flex-1 h-px mx-2 ${isDark ? 'bg-neutral-800' : 'bg-neutral-300'}`} />
-                <span className={`font-mono ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>{lang.percentage}%</span>
+                <span className={`text-2xl font-serif tracking-tight ${isDark ? 'text-white' : 'text-black'}`}>{lang.name}</span>
+                <div className="flex-1" />
+                <span className={`font-mono text-lg ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>{lang.percentage}%</span>
               </motion.div>
             ))}
           </div>

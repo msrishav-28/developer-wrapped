@@ -22,28 +22,30 @@ export const GridSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
                 text="Every commit counts." 
                 className={`text-4xl font-serif mb-2 ${isDark ? 'text-white' : 'text-black'}`} 
             />
-             <TextReveal 
+            <TextReveal 
                 text={`${data.totalCommits} contributions made.`} 
-                className="text-xl font-mono text-emerald-400" 
+                className="text-2xl font-mono text-emerald-500" 
                 highlight={`${data.totalCommits}`}
                 delay={0.5}
             />
         </div>
 
-        <div className={`relative p-4 rounded-2xl border shadow-2xl backdrop-blur-sm overflow-hidden ${isDark ? 'bg-neutral-900/50 border-white/10' : 'bg-neutral-100/50 border-black/10'}`}>
-            <div className="flex gap-1">
+        <motion.div 
+            whileHover={{ scale: 1.02 }}
+            className={`relative p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl overflow-hidden transition-transform ${isDark ? 'bg-neutral-900/40 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}>
+            <div className="flex gap-1.5">
                 {Array.from({ length: 20 }).map((_, weekIndex) => (
                     <div key={weekIndex} className="flex flex-col gap-1">
                         {Array.from({ length: 7 }).map((_, dayIndex) => {
                             const dataIndex = weekIndex * 7 + dayIndex;
                             const commitCount = displayData[dataIndex]?.commits || 0;
                             
-                            let bgClass = isDark ? "bg-neutral-800" : "bg-neutral-300";
+                            let bgClass = isDark ? "bg-neutral-800" : "bg-neutral-200";
                             let opacity = 0.3;
                             
                             if (commitCount > 0) {
                                 bgClass = "bg-emerald-500";
-                                opacity = Math.min(0.4 + (commitCount / 10), 1);
+                                opacity = Math.min(0.5 + (commitCount / 10), 1);
                             }
 
                             return (
@@ -57,16 +59,16 @@ export const GridSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
                                         stiffness: 200,
                                         damping: 20
                                     }}
-                                    className={`w-3 h-3 md:w-4 md:h-4 rounded-sm ${bgClass}`}
-                                    style={{ opacity: commitCount > 0 ? opacity : 0.2, boxShadow: commitCount > 5 ? '0 0 8px #10b981' : 'none' }}
+                                    className={`w-3.5 h-3.5 md:w-4 md:h-4 rounded-[4px] ${bgClass}`}
+                                    style={{ opacity: commitCount > 0 ? opacity : 0.3, boxShadow: commitCount > 5 ? '0 0 10px #10b981' : 'none' }}
                                 />
                             );
                         })}
                     </div>
                 ))}
             </div>
-             <div className={`absolute inset-0 bg-gradient-to-t via-transparent to-transparent opacity-60 pointer-events-none ${isDark ? 'from-neutral-900' : 'from-neutral-100'}`}></div>
-        </div>
+            <div className={`absolute inset-0 pointer-events-none rounded-[2rem] ring-1 ring-inset ${isDark ? 'ring-white/10' : 'ring-black/5'}`}></div>
+        </motion.div>
 
         <motion.p 
             initial={{ opacity: 0 }}

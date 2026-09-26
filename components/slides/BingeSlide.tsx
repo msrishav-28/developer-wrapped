@@ -33,10 +33,11 @@ export const BingeSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
         {/* Spotify Section */}
         {media.topSpotifyTracks && media.topSpotifyTracks.length > 0 && (
           <motion.div
-            initial={{ opacity: 0, y: 20 }}
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ delay: 0.6 }}
-            className={`p-6 rounded-2xl border ${isDark ? 'bg-neutral-900/50 border-neutral-800' : 'bg-neutral-50 border-neutral-200'}`}
+            whileHover={{ scale: 1.02 }}
+            transition={{ delay: 0.6, type: "spring", damping: 20 }}
+            className={`p-6 md:p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl transition-transform cursor-pointer ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50 hover:bg-neutral-800/80 hover:border-green-500/50' : 'bg-white/60 border-black/10 shadow-black/10 hover:bg-white/80 hover:border-green-500/50'}`}
           >
             <div className="flex items-center gap-3 mb-4">
               <Music className={isDark ? 'text-green-400' : 'text-green-600'} size={20} />
@@ -62,10 +63,11 @@ export const BingeSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           {/* Anime Section */}
           {media.topAnime && media.topAnime.length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.8 }}
-              className={`p-6 rounded-2xl border ${isDark ? 'bg-neutral-900/50 border-neutral-800' : 'bg-neutral-50 border-neutral-200'}`}
+              whileHover={{ scale: 1.02 }}
+              transition={{ delay: 0.8, type: "spring", damping: 20 }}
+              className={`p-6 md:p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl transition-transform cursor-pointer ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50 hover:bg-neutral-800/80 hover:border-blue-500/50' : 'bg-white/60 border-black/10 shadow-black/10 hover:bg-white/80 hover:border-blue-500/50'}`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <Tv className={isDark ? 'text-blue-400' : 'text-blue-600'} size={20} />
@@ -82,10 +84,11 @@ export const BingeSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           {/* Movies Section */}
           {media.topMovies && media.topMovies.length > 0 && (
             <motion.div
-              initial={{ opacity: 0, y: 20 }}
+              initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 1.0 }}
-              className={`p-6 rounded-2xl border ${isDark ? 'bg-neutral-900/50 border-neutral-800' : 'bg-neutral-50 border-neutral-200'}`}
+              whileHover={{ scale: 1.02 }}
+              transition={{ delay: 1.0, type: "spring", damping: 20 }}
+              className={`p-6 md:p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl transition-transform cursor-pointer ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50 hover:bg-neutral-800/80 hover:border-orange-500/50' : 'bg-white/60 border-black/10 shadow-black/10 hover:bg-white/80 hover:border-orange-500/50'}`}
             >
               <div className="flex items-center gap-3 mb-4">
                 <Film className={isDark ? 'text-orange-400' : 'text-orange-600'} size={20} />

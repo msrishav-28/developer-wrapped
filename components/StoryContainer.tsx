@@ -173,11 +173,11 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
       onPointerUp={handlePointerUp}
       onPointerLeave={() => !isLastSlide && setIsPaused(false)}
     >
-      <div className="absolute top-4 left-2 right-2 flex gap-1 z-50">
+      <div className="absolute top-4 left-2 right-2 flex gap-1.5 z-50 px-2">
         {Array.from({ length: totalSlides }).map((_, idx) => (
-          <div key={idx} className={`h-1 flex-1 rounded-full overflow-hidden ${isDark ? 'bg-neutral-800' : 'bg-neutral-300'}`}>
+          <div key={idx} className={`h-1 flex-1 rounded-full overflow-hidden ${isDark ? 'bg-white/20' : 'bg-black/20'}`}>
             <div 
-              className={`h-full transition-all duration-100 ease-linear ${isDark ? 'bg-white' : 'bg-neutral-800'}`}
+              className={`h-full transition-all duration-100 ease-linear ${isDark ? 'bg-white shadow-[0_0_10px_rgba(255,255,255,0.8)]' : 'bg-black shadow-[0_0_10px_rgba(0,0,0,0.8)]'}`}
               style={{ 
                 width: idx < currentSlide ? '100%' : idx === currentSlide ? (isLastSlide ? '100%' : `${progress}%`) : '0%' 
               }}
@@ -186,36 +186,37 @@ export const StoryContainer: React.FC<StoryContainerProps> = ({ data, onComplete
         ))}
       </div>
 
-      <div className="absolute top-8 right-4 z-50 flex items-center gap-1">
+      <div className={`absolute top-10 right-4 z-50 flex items-center gap-1.5 p-1.5 rounded-full backdrop-blur-md border shadow-lg transition-all ${isDark ? 'bg-neutral-900/40 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}>
         {!isLastSlide && (
           <button
             onClick={(e) => { e.stopPropagation(); setIsPaused(prev => !prev); }}
-            className={`p-2 rounded-lg transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
+            className={`p-2 rounded-full transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/20' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
             aria-label={isPaused ? "Play" : "Pause"}
           >
-            {isPaused ? <Play size={20} /> : <Pause size={20} />}
+            {isPaused ? <Play size={16} fill="currentColor" /> : <Pause size={16} fill="currentColor" />}
           </button>
         )}
         <button
           onClick={(e) => { e.stopPropagation(); setIsMuted(prev => !prev); }}
-          className={`p-2 rounded-lg transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
+          className={`p-2 rounded-full transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/20' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
           aria-label="Toggle audio"
         >
-          {isMuted ? <VolumeX size={20} /> : <Volume2 size={20} />}
+          {isMuted ? <VolumeX size={16} /> : <Volume2 size={16} />}
         </button>
         <button
           onClick={(e) => { e.stopPropagation(); toggleTheme(); }}
-          className={`p-2 rounded-lg transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
+          className={`p-2 rounded-full transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/20' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
           aria-label="Toggle theme"
         >
-          {isDark ? <Sun size={20} /> : <Moon size={20} />}
+          {isDark ? <Sun size={16} /> : <Moon size={16} />}
         </button>
+        <div className={`w-px h-5 mx-1 ${isDark ? 'bg-white/20' : 'bg-black/20'}`} />
         <button 
           onClick={(e) => { e.stopPropagation(); onComplete(); }}
-          className={`p-2 rounded-lg transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/10' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
+          className={`p-2 rounded-full transition-all active:scale-90 ${isDark ? 'text-white/70 hover:text-white hover:bg-white/20' : 'text-black/70 hover:text-black hover:bg-black/10'}`}
           aria-label="Close"
         >
-          <X size={20} />
+          <X size={16} />
         </button>
       </div>
 

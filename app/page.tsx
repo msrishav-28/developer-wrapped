@@ -206,8 +206,16 @@ export default function Home() {
         </button>
       </div>
 
-      <div className={`absolute top-[-20%] left-[-20%] w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none ${isDark ? 'bg-hero-blue/20' : 'bg-hero-blue/10'}`} />
-      <div className={`absolute bottom-[-20%] right-[-20%] w-[500px] h-[500px] rounded-full blur-[120px] pointer-events-none ${isDark ? 'bg-hero-purple/20' : 'bg-hero-purple/10'}`} />
+      <motion.div 
+        animate={{ x: [0, 50, 0], y: [0, -50, 0], scale: [1, 1.1, 1] }} 
+        transition={{ duration: 15, repeat: Infinity, ease: "easeInOut" }}
+        className={`absolute top-[-20%] left-[-20%] w-[700px] h-[700px] rounded-full blur-[120px] pointer-events-none ${isDark ? 'bg-hero-blue/20' : 'bg-hero-blue/10'}`} 
+      />
+      <motion.div 
+        animate={{ x: [0, -50, 0], y: [0, 50, 0], scale: [1, 1.2, 1] }} 
+        transition={{ duration: 20, repeat: Infinity, ease: "easeInOut" }}
+        className={`absolute bottom-[-20%] right-[-20%] w-[700px] h-[700px] rounded-full blur-[120px] pointer-events-none ${isDark ? 'bg-hero-purple/20' : 'bg-hero-purple/10'}`} 
+      />
 
       <motion.div 
         initial={{ y: 20, opacity: 0 }}
@@ -231,7 +239,7 @@ export default function Home() {
                 if(error) setError(null)
               }}
               placeholder="Enter GitHub Username"
-              className={`w-full border rounded-xl px-6 py-4 text-xl font-mono text-center focus:outline-none focus:border-hero-blue focus:ring-1 focus:ring-hero-blue transition-all ${isDark ? 'bg-neutral-900/50 border-neutral-800 placeholder:text-neutral-600' : 'bg-neutral-100 border-neutral-200 placeholder:text-neutral-400'}`}
+              className={`w-full border rounded-xl px-6 py-4 text-xl font-mono text-center focus:outline-none focus:ring-2 transition-all shadow-inner backdrop-blur-md ${isDark ? 'bg-neutral-900/40 border-white/10 placeholder:text-neutral-600 focus:border-neon-cyan/50 focus:ring-neon-cyan/30 text-white' : 'bg-white/60 border-black/10 placeholder:text-neutral-400 focus:border-hero-blue/50 focus:ring-hero-blue/30 text-black'}`}
             />
           </div>
 
@@ -239,7 +247,7 @@ export default function Home() {
             <select
               value={year}
               onChange={(e) => setYear(parseInt(e.target.value))}
-              className={`w-full border rounded-xl px-6 py-4 text-xl font-mono text-center appearance-none focus:outline-none focus:border-hero-blue focus:ring-1 focus:ring-hero-blue transition-all cursor-pointer ${isDark ? 'bg-neutral-900/50 border-neutral-800 text-neutral-300' : 'bg-neutral-100 border-neutral-200 text-neutral-700'}`}
+              className={`w-full border rounded-xl px-6 py-4 text-xl font-mono text-center appearance-none focus:outline-none focus:ring-2 transition-all cursor-pointer shadow-inner backdrop-blur-md ${isDark ? 'bg-neutral-900/40 border-white/10 text-neutral-300 focus:border-neon-pink/50 focus:ring-neon-pink/30' : 'bg-white/60 border-black/10 text-neutral-700 focus:border-hero-purple/50 focus:ring-hero-purple/30'}`}
             >
               {[new Date().getFullYear(), new Date().getFullYear() - 1, new Date().getFullYear() - 2, new Date().getFullYear() - 3].map(y => (
                 <option key={y} value={y}>{y}</option>
@@ -404,7 +412,7 @@ export default function Home() {
           <button
             type="submit"
             disabled={isLoading || !username}
-            className={`w-full rounded-xl px-6 py-4 font-bold text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group ${isDark ? 'bg-white text-black hover:bg-neutral-200' : 'bg-black text-white hover:bg-neutral-800'}`}
+            className={`w-full rounded-xl px-6 py-4 font-bold text-lg transition-all flex items-center justify-center gap-3 disabled:opacity-50 disabled:cursor-not-allowed group relative overflow-hidden ${isDark ? 'bg-white text-black hover:bg-neutral-200 hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]' : 'bg-black text-white hover:bg-neutral-800 hover:shadow-[0_0_30px_rgba(0,0,0,0.2)]'}`}
           >
             {isLoading ? (
               <>

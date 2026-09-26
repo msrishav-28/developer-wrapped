@@ -149,12 +149,16 @@ export const PosterSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
         
         <motion.div 
           ref={posterRef}
-          initial={{ y: 50, opacity: 0, scale: 0.9 }}
-          animate={{ y: 0, opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "circOut" }}
-          className={`border-4 p-6 w-full max-w-sm aspect-[4/5] relative flex flex-col justify-between ${isDark ? 'bg-neutral-900 border-white shadow-[0_0_50px_rgba(255,255,255,0.1)]' : 'bg-neutral-100 border-black shadow-[0_0_50px_rgba(0,0,0,0.1)]'}`}
+          initial={{ y: 50, opacity: 0, scale: 0.9, rotateX: 15 }}
+          animate={{ y: 0, opacity: 1, scale: 1, rotateX: 0 }}
+          transition={{ duration: 1, type: "spring", damping: 15 }}
+          className={`group p-8 w-full max-w-sm aspect-[4/5] relative flex flex-col justify-between overflow-hidden rounded-[2rem] border-2 shadow-2xl ${isDark ? 'bg-neutral-900 border-white/20 shadow-[0_30px_60px_-15px_rgba(255,255,255,0.2)]' : 'bg-white border-black/10 shadow-[0_30px_60px_-15px_rgba(0,0,0,0.3)]'}`}
         >
-          <div className={`flex justify-between items-start border-b pb-4 ${isDark ? 'border-neutral-700' : 'border-neutral-300'}`}>
+          {/* Holographic Glare */}
+          <div className="absolute inset-0 z-50 pointer-events-none bg-gradient-to-tr from-transparent via-white/10 to-transparent mix-blend-overlay"></div>
+          <div className={`absolute inset-0 bg-gradient-to-br opacity-50 z-0 pointer-events-none ${isDark ? 'from-hero-blue/20 via-hero-purple/20 to-neon-cyan/20' : 'from-hero-blue/10 via-hero-purple/10 to-neon-cyan/10'}`}></div>
+
+          <div className={`relative z-10 flex justify-between items-start border-b pb-4 ${isDark ? 'border-neutral-700/50' : 'border-neutral-200'}`}>
             <img 
                 src={data.avatarUrl} 
                 alt="Avatar" 
@@ -167,41 +171,41 @@ export const PosterSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
             </div>
           </div>
 
-          <div className="space-y-6 py-4">
+          <div className="relative z-10 space-y-8 py-4">
              <div>
-               <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Starring</div>
-               <div className={`text-2xl font-sans font-bold ${isDark ? 'text-white' : 'text-black'}`}>@{data.username}</div>
-               <div className="text-lg text-hero-blue font-serif italic">{data.archetype}</div>
+               <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>Starring</div>
+               <div className={`text-3xl font-sans font-bold tracking-tight ${isDark ? 'text-white' : 'text-black'}`}>@{data.username}</div>
+               <div className="text-xl text-hero-purple font-serif italic">{data.archetype}</div>
              </div>
              
-             <div className="grid grid-cols-2 gap-4">
+             <div className="grid grid-cols-2 gap-6">
                <div>
-                  <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Commits</div>
-                  <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.totalCommits}</div>
+                  <div className={`text-[10px] uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>Commits</div>
+                  <div className={`text-2xl font-serif ${isDark ? 'text-white' : 'text-black'}`}>{data.totalCommits}</div>
                </div>
                <div>
-                  <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Top Lang</div>
-                  <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.topLanguages[0]?.name || "N/A"}</div>
+                  <div className={`text-[10px] uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>Top Lang</div>
+                  <div className={`text-2xl font-serif truncate ${isDark ? 'text-white' : 'text-black'}`}>{data.topLanguages[0]?.name || "N/A"}</div>
                </div>
                <div>
-                  <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Flow Mins</div>
-                  <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.flowStateMinutes.toLocaleString()}</div>
+                  <div className={`text-[10px] uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>Flow Mins</div>
+                  <div className={`text-2xl font-serif ${isDark ? 'text-white' : 'text-black'}`}>{data.flowStateMinutes.toLocaleString()}</div>
                </div>
                <div>
-                  <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Vibe Match</div>
-                  <div className={`text-xl font-serif italic ${isDark ? 'text-white' : 'text-black'}`}>{data.vibeScore}%</div>
+                  <div className={`text-[10px] uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>Vibe Match</div>
+                  <div className={`text-2xl font-serif ${isDark ? 'text-white' : 'text-black'}`}>{data.vibeScore}%</div>
                </div>
              </div>
 
              <div>
-                <div className={`text-xs uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-500' : 'text-neutral-600'}`}>Magnum Opus</div>
-                <div className={`text-lg font-bold truncate ${isDark ? 'text-neutral-200' : 'text-neutral-800'}`}>{data.topRepo.name}</div>
+                <div className={`text-[10px] uppercase font-mono tracking-widest mb-1 ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>Magnum Opus</div>
+                <div className={`text-xl font-bold truncate ${isDark ? 'text-neutral-200' : 'text-neutral-800'}`}>{data.topRepo.name}</div>
              </div>
           </div>
 
-          <div className={`border-t pt-4 flex justify-between items-end ${isDark ? 'border-neutral-700' : 'border-neutral-300'}`}>
+          <div className={`relative z-10 border-t pt-4 flex justify-between items-end ${isDark ? 'border-neutral-700/50' : 'border-neutral-200'}`}>
              <div className={`barcode h-8 w-24 opacity-80 ${isDark ? 'bg-white' : 'bg-black'}`} style={{ backgroundImage: isDark ? 'repeating-linear-gradient(90deg, black 0, black 2px, transparent 2px, transparent 4px)' : 'repeating-linear-gradient(90deg, white 0, white 2px, transparent 2px, transparent 4px)'}}></div>
-             <div className={`text-[10px] font-mono uppercase ${isDark ? 'text-neutral-600' : 'text-neutral-500'}`}>Directed by You</div>
+             <div className={`text-[10px] font-mono uppercase ${isDark ? 'text-neutral-500' : 'text-neutral-400'}`}>Directed by You</div>
           </div>
         </motion.div>
 

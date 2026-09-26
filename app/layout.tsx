@@ -202,6 +202,7 @@ export default function RootLayout({
         />
       </head>
       <body>
+        <div className="noise-overlay" aria-hidden="true" />
         <SessionProvider>
           <ThemeProvider>
             <Analytics />

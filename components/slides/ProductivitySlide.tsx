@@ -14,10 +14,7 @@ export const ProductivitySlide: React.FC<{ data: GitStoryData }> = ({ data }) =>
   const { productivity, archetype } = data;
   
   const getIcon = () => {
-    if (productivity.timeOfDay === "Morning") return <Sunrise size={100} className="text-orange-400" />;
-    if (productivity.timeOfDay === "Afternoon") return <Sun size={100} className="text-yellow-400" />;
-    if (productivity.timeOfDay === "Evening") return <Sunset size={100} className="text-indigo-400" />;
-    return <Moon size={100} className="text-blue-200" />;
+    // We will replace this with a clock visual, but keep function for gradient reference if needed
   };
 
   const gradientStart = productivity.timeOfDay === "Morning" ? "#fdba74" : 
@@ -40,13 +37,52 @@ export const ProductivitySlide: React.FC<{ data: GitStoryData }> = ({ data }) =>
         </div>
 
         <motion.div
-            initial={{ scale: 0, rotate: -45 }}
-            animate={{ scale: 1, rotate: 0 }}
-            transition={{ type: "spring", duration: 1.5 }}
-            className="mb-8 relative"
+            initial={{ scale: 0 }}
+            animate={{ scale: 1 }}
+            transition={{ type: "spring", duration: 1.5, bounce: 0.5 }}
+            className={`mb-12 relative w-48 h-48 flex items-center justify-center rounded-full border-2 shadow-2xl backdrop-blur-xl ${isDark ? 'border-white/10 bg-white/5' : 'border-black/5 bg-black/5'}`}
         >
-            <div className={`absolute inset-0 blur-3xl rounded-full ${isDark ? 'bg-white/20' : 'bg-black/10'}`}></div>
-            {getIcon()}
+            <motion.div 
+              initial={{ opacity: 0, scale: 0.8 }}
+              animate={{ opacity: 1, scale: 1 }}
+              transition={{ delay: 2.5, duration: 1 }}
+              className={`absolute inset-0 blur-3xl rounded-full ${isDark ? 'bg-white/20' : 'bg-black/10'}`} 
+            />
+            
+            {/* Clock ticks */}
+            {[...Array(12)].map((_, i) => (
+              <div 
+                key={i} 
+                className={`absolute w-0.5 rounded-full ${isDark ? 'bg-white/30' : 'bg-black/20'}`}
+                style={{ 
+                  height: i % 3 === 0 ? '12px' : '6px',
+                  top: '12px',
+                  transformOrigin: '50% 84px',
+                  transform: `rotate(${i * 30}deg)`
+                }}
+              />
+            ))}
+
+            {/* Hour hand */}
+            <motion.div 
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 * 3 + (productivity.peakHour % 12) * 30 }}
+              transition={{ duration: 3, type: "spring", damping: 15, stiffness: 60 }}
+              className={`absolute w-1.5 h-14 origin-bottom rounded-full shadow-lg z-10 ${isDark ? 'bg-white' : 'bg-black'}`}
+              style={{ bottom: '50%' }}
+            />
+            
+            {/* Minute hand */}
+            <motion.div 
+              initial={{ rotate: 0 }}
+              animate={{ rotate: 360 * 12 }}
+              transition={{ duration: 3, type: "spring", damping: 15, stiffness: 60 }}
+              className={`absolute w-1 h-20 origin-bottom rounded-full z-0 ${isDark ? 'bg-neutral-500' : 'bg-neutral-400'}`}
+              style={{ bottom: '50%' }}
+            />
+            
+            {/* Center dot */}
+            <div className={`absolute w-4 h-4 rounded-full z-20 ${isDark ? 'bg-white shadow-[0_0_15px_white]' : 'bg-black shadow-[0_0_15px_black]'}`} />
         </motion.div>
 
         <TextReveal 
@@ -65,12 +101,14 @@ export const ProductivitySlide: React.FC<{ data: GitStoryData }> = ({ data }) =>
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ delay: 2 }}
-            className="mt-12"
+            className="mt-16 w-full max-w-lg"
         >
-            <p className={`text-sm font-sans mb-2 tracking-widest uppercase ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Your Developer Archetype</p>
-            <h2 className={`text-5xl font-bold font-serif italic text-transparent bg-clip-text bg-gradient-to-r ${isDark ? 'from-white to-white/60' : 'from-black to-black/60'}`}>
-                {archetype}
-            </h2>
+            <div className={`p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}>
+                <p className={`text-xs font-mono mb-4 tracking-widest uppercase ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Your Developer Archetype</p>
+                <h2 className={`text-5xl md:text-6xl font-bold font-serif tracking-tighter text-transparent bg-clip-text bg-gradient-to-br ${isDark ? 'from-white via-white/90 to-white/30' : 'from-black via-black/90 to-black/30'}`}>
+                    {archetype}.
+                </h2>
+            </div>
         </motion.div>
 
       </div>

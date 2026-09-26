@@ -18,22 +18,28 @@ export const RoutineSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
   const maxHeight = 180;
 
   return (
-    <SlideLayout gradientStart="#374151" gradientEnd="#111827">
+    <SlideLayout gradientStart="#1E293B" gradientEnd="#0F172A">
       <div className="flex-1 flex flex-col items-center justify-center">
         
         <div className="mb-10 text-center">
           <TextReveal 
             text="Your favorite day?" 
-            className={`text-xl font-mono mb-4 uppercase tracking-widest ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`} 
+            className={`text-lg font-mono mb-4 uppercase tracking-widest ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`} 
           />
           <TextReveal 
             text={`${fullDays[maxIndex]}s.`} 
-            className={`text-5xl md:text-6xl font-serif italic ${isDark ? 'text-white' : 'text-neutral-800'}`} 
+            className={`text-6xl md:text-8xl font-serif tracking-tighter ${isDark ? 'text-white' : 'text-neutral-800'}`} 
             delay={0.5}
           />
         </div>
 
-        <div className="flex items-end justify-center gap-3 md:gap-6 w-full max-w-xl px-4">
+        <motion.div 
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 1 }}
+            className={`p-6 md:p-10 rounded-[2rem] border shadow-2xl backdrop-blur-xl ${isDark ? 'bg-neutral-900/40 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}
+        >
+          <div className="flex items-end justify-center gap-4 md:gap-8 w-full max-w-xl">
           {data.weekdayStats.map((count, index) => {
             const heightPercentage = maxVal > 0 ? count / maxVal : 0;
             const barHeight = Math.max(heightPercentage * maxHeight, 30);
@@ -49,14 +55,14 @@ export const RoutineSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
                     duration: 0.6, 
                     ease: [0.34, 1.56, 0.64, 1]
                   }}
-                  className={`w-full max-w-12 md:max-w-16 rounded-xl ${
+                  className={`w-10 md:w-14 rounded-full relative overflow-hidden transition-all duration-300 hover:scale-105 cursor-pointer ${
                     isMax 
-                      ? (isDark ? "bg-white" : "bg-neutral-800") 
-                      : (isDark ? "bg-neutral-600" : "bg-neutral-400")
+                      ? (isDark ? "bg-white" : "bg-neutral-900") 
+                      : (isDark ? "bg-neutral-700/50 hover:bg-neutral-600" : "bg-neutral-300 hover:bg-neutral-400")
                   }`}
                   style={{
                     boxShadow: isMax 
-                      ? (isDark ? '0 0 40px rgba(255,255,255,0.5)' : '0 0 30px rgba(0,0,0,0.2)') 
+                      ? (isDark ? '0 0 30px rgba(255,255,255,0.4), inset 0 0 10px rgba(0,0,0,0.5)' : '0 0 30px rgba(0,0,0,0.2), inset 0 0 10px rgba(255,255,255,0.5)') 
                       : 'none'
                   }}
                 />
@@ -75,7 +81,8 @@ export const RoutineSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
               </div>
             );
           })}
-        </div>
+          </div>
+        </motion.div>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}

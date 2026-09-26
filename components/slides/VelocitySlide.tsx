@@ -4,7 +4,7 @@ import React from 'react';
 import { SlideLayout } from '../SlideLayout';
 import { GitStoryData } from '../../types';
 import { TextReveal } from '../TextReveal';
-import { ResponsiveContainer, LineChart, Line, YAxis } from 'recharts';
+import { ResponsiveContainer, AreaChart, Area, YAxis } from 'recharts';
 import { motion } from 'framer-motion';
 import { useTheme } from '@/context/ThemeContext';
 
@@ -22,7 +22,7 @@ export const VelocitySlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           />
           <TextReveal 
             text={`You pushed code on ${data.velocityData.filter(d => d.commits > 0).length} days.`} 
-            className={`text-xl font-sans ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}
+            className={`text-2xl font-sans tracking-tight ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}
             delay={0.5}
             highlight={`${data.velocityData.filter(d => d.commits > 0).length}`}
           />
@@ -36,17 +36,24 @@ export const VelocitySlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
         >
              <div className="absolute inset-0 bg-hero-purple/10 blur-xl"></div>
             <ResponsiveContainer width="100%" height="100%">
-              <LineChart data={data.velocityData}>
+              <AreaChart data={data.velocityData}>
+                <defs>
+                  <linearGradient id="colorCommits" x1="0" y1="0" x2="0" y2="1">
+                    <stop offset="5%" stopColor="#7C3AED" stopOpacity={0.5}/>
+                    <stop offset="95%" stopColor="#7C3AED" stopOpacity={0}/>
+                  </linearGradient>
+                </defs>
                 <YAxis hide domain={['dataMin', 'dataMax']} />
-                <Line 
+                <Area 
                   type="monotone" 
                   dataKey="commits" 
-                  stroke="#8B5CF6" 
-                  strokeWidth={2} 
-                  dot={false}
+                  stroke="#7C3AED" 
+                  strokeWidth={3}
+                  fillOpacity={1}
+                  fill="url(#colorCommits)"
                   animationDuration={3000}
                 />
-              </LineChart>
+              </AreaChart>
             </ResponsiveContainer>
         </motion.div>
 
@@ -57,10 +64,14 @@ export const VelocitySlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
             delay={2.0}
           />
            <TextReveal 
-            text={`${data.longestStreak} days. Unstoppable.`}
-            className={`text-4xl font-serif ${isDark ? 'text-white' : 'text-black'}`}
-            highlight="Unstoppable."
+            text={`${data.longestStreak} days.`}
+            className={`text-6xl md:text-8xl font-serif mb-2 tracking-tighter ${isDark ? 'text-white' : 'text-black'}`}
             delay={2.5}
+          />
+          <TextReveal 
+            text="Unstoppable."
+            className={`text-2xl font-serif italic ${isDark ? 'text-neon-pink' : 'text-hero-purple'}`}
+            delay={3.2}
           />
         </div>
       </div>

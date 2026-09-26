@@ -20,35 +20,37 @@ export const CommunitySlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
         <div className="mb-12 text-center">
             <TextReveal 
                 text="The Impact." 
-                className={`text-xl font-mono mb-4 uppercase tracking-widest justify-center ${isDark ? 'text-rose-300' : 'text-rose-700'}`} 
+                className={`text-xl font-mono mb-4 uppercase tracking-widest ${isDark ? 'text-rose-300' : 'text-rose-700'}`} 
             />
         </div>
 
-        <div className="grid grid-cols-1 gap-12 w-full max-w-md">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6 w-full max-w-2xl px-4">
             
             <motion.div 
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, y: -5 }}
                 transition={{ type: "spring", delay: 0.5 }}
-                className="flex flex-col items-center"
+                className={`flex flex-col items-center justify-center p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}
             >
-                <div className={`flex items-center gap-4 mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
-                    <Users size={48} className="text-rose-400" />
-                    <span className="text-7xl font-serif italic font-bold">{community.followers.toLocaleString()}</span>
+                <div className={`flex items-center justify-center w-16 h-16 rounded-full mb-6 shadow-inner ${isDark ? 'bg-white/10' : 'bg-black/5'}`}>
+                    <Users size={32} className="text-rose-400" />
                 </div>
+                <span className={`text-6xl font-serif mb-2 ${isDark ? 'text-white' : 'text-black'}`}>{community.followers.toLocaleString()}</span>
                 <span className={`font-mono tracking-widest uppercase text-sm ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Followers inspired</span>
             </motion.div>
 
             <motion.div 
-                initial={{ opacity: 0, scale: 0.5 }}
-                animate={{ opacity: 1, scale: 1 }}
-                transition={{ type: "spring", delay: 1.0 }}
-                className="flex flex-col items-center"
+                initial={{ opacity: 0, y: 30 }}
+                animate={{ opacity: 1, y: 0 }}
+                whileHover={{ scale: 1.02, y: -5 }}
+                transition={{ type: "spring", delay: 0.8 }}
+                className={`flex flex-col items-center justify-center p-8 rounded-[2rem] border shadow-2xl backdrop-blur-xl ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50' : 'bg-white/60 border-black/10 shadow-black/10'}`}
             >
-                <div className={`flex items-center gap-4 mb-2 ${isDark ? 'text-white' : 'text-black'}`}>
-                    <Star size={48} className="text-yellow-400" />
-                    <span className="text-7xl font-serif italic font-bold">{community.totalStars.toLocaleString()}</span>
+                <div className={`flex items-center justify-center w-16 h-16 rounded-full mb-6 shadow-inner ${isDark ? 'bg-white/10' : 'bg-black/5'}`}>
+                    <Star size={32} className="text-yellow-400" />
                 </div>
+                <span className={`text-6xl font-serif mb-2 ${isDark ? 'text-white' : 'text-black'}`}>{community.totalStars.toLocaleString()}</span>
                 <span className={`font-mono tracking-widest uppercase text-sm ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}>Stars Earned</span>
             </motion.div>
 

@@ -25,26 +25,28 @@ export const TextReveal: React.FC<TextRevealProps> = ({ text, className = "", de
     visible: {
       opacity: 1,
       y: 0,
+      filter: "blur(0px)",
       transition: {
         type: "spring",
-        damping: 12,
-        stiffness: 100,
+        damping: 14,
+        stiffness: 90,
       },
     },
     hidden: {
       opacity: 0,
       y: 20,
+      filter: "blur(8px)",
       transition: {
         type: "spring",
-        damping: 12,
-        stiffness: 100,
+        damping: 14,
+        stiffness: 90,
       },
     },
   };
 
   return (
     <motion.div
-      style={{ overflow: "hidden", display: "flex", flexWrap: "wrap", gap: "0.25em" }}
+      style={{ display: "flex", flexWrap: "wrap", gap: "0.25em" }}
       variants={container}
       initial="hidden"
       animate="visible"

@@ -22,7 +22,7 @@ export const TopTracksSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           />
           <TextReveal 
             text={`The repos you played the most in ${data.year}.`} 
-            className={`text-sm font-sans uppercase tracking-widest ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}
+            className={`text-xs font-mono uppercase tracking-widest ${isDark ? 'text-neutral-400' : 'text-neutral-600'}`}
             delay={0.3}
           />
         </div>
@@ -31,21 +31,22 @@ export const TopTracksSlide: React.FC<{ data: GitStoryData }> = ({ data }) => {
           {data.topRepos.slice(0, 5).map((repo, i) => (
             <motion.div
               key={repo.name}
-              initial={{ opacity: 0, x: -20 }}
-              animate={{ opacity: 1, x: 0 }}
-              transition={{ delay: 0.5 + i * 0.1 }}
-              className={`group flex items-center gap-4 p-4 rounded-xl transition-all ${isDark ? 'hover:bg-neutral-900' : 'hover:bg-neutral-100'}`}
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              whileHover={{ scale: 1.02, x: 10 }}
+              transition={{ delay: 0.5 + i * 0.1, type: "spring", damping: 20 }}
+              className={`group flex items-center gap-4 p-4 rounded-[1.5rem] border shadow-lg backdrop-blur-xl cursor-pointer ${isDark ? 'bg-neutral-900/60 border-white/10 shadow-black/50 hover:bg-neutral-800/80 hover:border-neon-cyan/50' : 'bg-white/60 border-black/10 shadow-black/10 hover:bg-white/80 hover:border-hero-blue/50'}`}
             >
-              <div className={`w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-md font-mono text-xl ${isDark ? 'bg-neutral-800 text-neutral-400 group-hover:text-hero-blue group-hover:bg-hero-blue/10' : 'bg-neutral-200 text-neutral-600 group-hover:text-hero-blue group-hover:bg-hero-blue/10'}`}>
+              <div className={`w-12 h-12 flex-shrink-0 flex items-center justify-center rounded-xl font-mono text-xl shadow-inner transition-colors ${isDark ? 'bg-black/50 text-neutral-400 group-hover:text-neon-cyan group-hover:bg-neon-cyan/20' : 'bg-white/50 text-neutral-600 group-hover:text-hero-blue group-hover:bg-hero-blue/20'}`}>
                 <span className="group-hover:hidden">{i + 1}</span>
-                <Play size={20} className="hidden group-hover:block ml-1" />
+                <Play size={20} className="hidden group-hover:block ml-1" fill="currentColor" />
               </div>
               
               <div className="flex-1 min-w-0">
-                <h3 className={`font-bold truncate text-lg ${isDark ? 'text-white' : 'text-black'}`}>
+                <h3 className={`font-bold truncate text-lg font-sans tracking-tight ${isDark ? 'text-white' : 'text-black'}`}>
                   {repo.name}
                 </h3>
-                <p className={`truncate text-sm ${isDark ? 'text-neutral-400' : 'text-neutral-500'}`}>
+                <p className={`truncate text-xs font-mono mt-1 ${isDark ? 'text-neutral-400 group-hover:text-neutral-300' : 'text-neutral-500 group-hover:text-neutral-600'}`}>
                   {repo.description || (repo.language ? `Written in ${repo.language}` : "No description")}
                 </p>
               </div>
